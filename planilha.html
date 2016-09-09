@@ -5,6 +5,43 @@
     <title> Formulario em Planejamento</title>
   </head>
   <body>
-    <h1> Formulario em Planejamento </h1>
+
+    <html>
+	  <head>
+		  <link rel="stylesheet" href="planilha.css">
+		  <title>formulario</title>
+		          <meta charset="utf-8">
+			    </head>
+			      <body>
+				      <h1><center>Formulário</center></h1>
+
+
+					  <form name="input" action="html_form_action.asp"  method="get">
+						  Nome:
+						  <center><input type="text" name="firstname"></center>
+						  <br>
+						  <center>Restrição alimentar</center>
+						  Sim
+						  <center><input type="checkbox" name="sim"></center>
+						  Não
+						  <center><input type="checkbox" name="não"></center>
+              Se sim, qual é sua restrição alimentar?
+              <center><input type="text" name="restriçao alimentar"></center>
+              <center>Opção de pizza</center>
+              <center><select name="Opção de pizza"></center>
+              <option value="bota">calabresa</option>
+              <option value="fla">frango</option>
+              <option value="flu">portuguesa</option>
+              <option value="vasco">mussarela</option>
+              </select>
+
+
+              <center><input type="submit" value="Enviar"></center>
+					  </form>
+
+			      </body>
+</html>
+
+
   </body>
 </html>
