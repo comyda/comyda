@@ -1,0 +1,12 @@
+{
+  "name": "comyda",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "private": true,
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0"
+  }
+}
