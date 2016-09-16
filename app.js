@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 	  res.render('index');
 });
 app.get('/evento', function (req, res) {
-		res.render('planilha');
+		res.render('criar');
 });
 
 app.listen(3000, function () {
