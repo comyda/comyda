@@ -9,10 +9,23 @@
     <h1><center>Formulário</center></h1>
 
     <form name="input" action="html_form_action.asp" method="get">
-      <center>Nome:<input type="text" name="firstname"></center>
-      <center>Evento:<input type="text" name="evento"></center>
-      <center>Data:<input type="datetime-local" name="Data"></center>
-      <center><input type="submit" value="Enviar"></center>
+<center><h2>OxiFood Delivers</h2></center>
+<div class="campo">
+  <center><input type="text" name="firstname" placeholder="Nome do criador do evento" id="name"required></center>
+</div>
+<div class="campo">
+      <center><input type="text" name="evento" placeholder="Qual o nome do evento?" id="evento" required></center>
+    </div>
+<div class="campo">
+      <center><input type="text" name="closing" placeholder="Que horas esse pedido fecha?" id="closing" class="datetime-input" required=""></center>
+    </div>
+<div class="botao">
+  <center><input type="submit" value="Enviar"></center>
+</div>
+<div class="botao">
+  <center><input type="reset" value="Limpar"></center>
+</div>
+
     </form>
   </body>
 </html>
