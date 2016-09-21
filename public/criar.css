@@ -55,5 +55,10 @@ cursor: pointer;
         }
 h2{
   color: white;
-  
+  font-size: 40px;
+	text-align: center;
+
+}
+body{
+  background-color: #E9967A;
 }

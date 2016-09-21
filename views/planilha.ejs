@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title> Formulario em Planejamento</title>
-  </head>
-  <body>
-
-    <html>
-	  <head>
-		  <link rel="stylesheet" href="planilha.css">
+		  <link rel="stylesheet" href="../public/planilha.css">
 		  <title>formulario</title>
 		          <meta charset="utf-8">
-			    </head>
+
 			      <body>
 				      <h1><center>Formulário</center></h1>
 
 
 					  <form name="input" action="html_form_action.asp"  method="get">
-						  Nome:
-						  <center><input type="text" name="firstname"></center>
-						  <br>
-						  <center>Restrição alimentar</center>
-						  Sim
-						  <center><input type="checkbox" name="sim"></center>
-						  Não
-						  <center><input type="checkbox" name="não"></center>
-              Se sim, qual é sua restrição alimentar?
-              <center><input type="text" name="restriçao alimentar"></center>
+<h2>Quer participar do evento?</h2>
+<div class="campo">
+
+						  <center><input type="text" name="firstname" placeholder="Nome do Participante" id="seu nome" required></center>
+</div>
+
+<div class="campo">
+
+              <center>Restrição alimentar</center>
+						  <center>Sim<input type="checkbox" name="sim"></center>
+
+              <center>Não<input type="checkbox" name="não"></center>
+
+              <center><input type="text" name="restriçao alimentar" placeholder="Se sim, qual é sua restrição alimentar?" id="Restrinção"></center>
+</div>
+
+<div class="opções">
               <center>Opção de pizza</center>
               <center><select name="Opção de pizza"></center>
               <option value="Calabresa">Calabresa</option>
@@ -35,14 +35,20 @@
               <option value="Mussarela">Mussarela</option>
               <option value="Vegetariana">Vegetariana</option>
               </select>
+</div>
 
-
+<div class="botao">
               <center><input type="submit" value="Enviar"></center>
-					  </form>
+</div>
 
+<div class="botao">
+              <center><input type="reset" value="Limpar"></center>
+</div>
+            </form>
+  </head>
 			      </body>
-</html>
 
 
-  </body>
+
+
 </html>

@@ -1,12 +1,15 @@
 form {
 	    /* Apenas para centralizar o form na página */
 	    margin: 0 auto;
-	        width: 400px;
+	        width: 500px;
 		    /* Para ver as bordas do formulário */
-		    padding: 1em;
-		        border: 1px solid #CCC;
-			    border-radius: 1em;
-		    }
+		    padding: 4em;
+		        border: 4px solid #CCC;
+			    border-radius: 4em;
+					border-color: #FF7F50;
+					background-color: #FF7F50;
+					cursor: pointer;
+				}
 
 	form div + div {
 		    margin-top: 1em;
@@ -50,3 +53,11 @@ form {
 							        /* Esta margem extra representa aproximadamente o mesmo espaço que o espaço entre as labels e os seus campos de texto*/
 							        margin-left: .5em;
 							}
+body{
+							  background-color: #E9967A;
+							}
+h2 {
+	text-align: center;
+	font-size: 40px;
+	color: white;
+}
