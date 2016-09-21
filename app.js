@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-	  res.render('index');
+	  res.render('novaindex');
 });
 app.get('/evento', function (req, res) {
 		res.render('criar');
