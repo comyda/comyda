@@ -15,7 +15,8 @@ p {
 
 
 figcaption {
-    margin-top: 10px;
+margin-top: 10px;
+text-align: center;
 }
 
 body {
@@ -23,4 +24,9 @@ body {
     margin-right: auto;
     width: 940px;
     background-color: brown;
+}
+img {
+  height: 212px;
+  width: 400px;
+
 }
