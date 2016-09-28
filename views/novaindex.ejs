@@ -12,15 +12,36 @@
 
 <a class="btn btn-primary" href="/evento">Criar um pedido</a>
   <link rel="stylesheet" href="index.css">
-<header>
+</header>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>
+          Eventos
+        </th>
+        <th>
+          Horário
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i<eventos.length; i++) {%>
+     <tr>
+       <td>
+         <%= eventos[i].name%>
+       </td>
+       <td>
+        <%= eventos[i].time%>
+       </td>
+     </tr>
+  <% } %>
+    </tbody>
+  </table>
   <div id="rodape">
-					      <center>Made in Recife!</center>
-              <center>Por Leonardo Oliveira e Rayana Gonçalves at <a href="https://www.thoughtworks.com/" target="_blank" ><em>Thoughtworks</em></a></center>
-
-              </div>
+					    <center>Made in Recife!</center>
+              <center>Por Leonardo Oliveira e Rayana Gonçalves at
+              <a href="https://www.thoughtworks.com/" target="_blank" >
+              <em>Thoughtworks</em></a></center>
+  </div>
 </body>
-
-
-
-
 </html>
