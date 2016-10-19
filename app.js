@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
+var uuid = require('uuid');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -11,11 +12,35 @@ app.get('/', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
 
 // Use connect method to connect to the server
-MongoClient.connect(url, function(err, db) {
+	MongoClient.connect(url, function(err, db) {
 
 		var collection = db.collection('eventos');
 		collection.find({}).toArray(function(err, docs) {
-    	res.render('novaindex', {eventos:docs});
+
+			for (var i = 0; i < docs.length; i++) {
+				var day = docs[i].time.getDate();
+				if (day < 10) {
+					day = '0' + day;
+				}
+				var month = docs[i].time.getMonth()+1;
+				if (month < 10) {
+					month = '0' + month;
+				}
+				var hours = docs[i].time.getHours() + 3;
+				if (hours < 10) {
+					hours = '0' + hours;
+				}
+				var minutes = docs[i].time.getMinutes();
+				if (minutes < 10) {
+					minutes = '0' + minutes;
+				}
+
+				docs[i].timeAsString = day + '/' + month + ' ' + hours+ ':'+ minutes;
+
+
+			}
+
+			res.render('novaindex', {eventos:docs});
    });
 
 
@@ -24,9 +49,10 @@ MongoClient.connect(url, function(err, db) {
 	});
 });
 
-app.get('/evento', function (req, res) {
-		res.render('criar');
-});
+app.get('/evento', function(req, res) {
+	res.render('criar');
+})
+
 app.post('/eventos', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
 
@@ -34,13 +60,22 @@ app.post('/eventos', function (req, res) {
 	MongoClient.connect(url, function(err, db) {
 
 		var collection = db.collection('eventos');
-		collection.insertOne(req.body);
 
+		var event = {
+			_id: uuid.v4(),
+			name: req.body.name,
+			ownername: req.body.ownername,
+			time: new Date(req.body.time)
+		};
+
+
+		collection.insertOne(event);
+		res.redirect('/');
 
 	  db.close();
 	});
 
-res.render('novaindex');
+
 
 });
 
