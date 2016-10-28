@@ -8,24 +8,31 @@
   <body>
     <h1><center>Formulário</center></h1>
 
-    <form name="input" action="html_form_action.asp" method="get">
-<h2>OxiFood Delivers</h2>
-<div class="campo">
-  <center><input type="text" name="firstname" placeholder="Nome do criador do evento" id="name"required></center>
-</div>
-<div class="campo">
-      <center><input type="text" name="evento" placeholder="Qual o nome do evento?" id="evento" required></center>
-    </div>
-<div class="campo">
-      <center><input type="text" name="closing" placeholder="Qual a data e hora do evento?" id="closing" class="datetime-input" required=""></center>
-    </div>
-<div class="botao">
-  <center><input type="submit" value="Enviar"></center>
-</div>
-<div class="botao">
-  <center><input type="reset" value="Limpar"></center>
-</div>
+    <form name="input" action="/eventos" method="post">
+
+      <h2>OxiFood Delivers</h2>
+
+      <div class="campo">
+        <center><input type="text" name="ownername" placeholder="Nome do criador do evento" id="name"></center>
+      </div>
+
+      <div class="campo">
+        <center><input type="text" name="name" placeholder="Qual o nome do evento?" id="event" required></center>
+      </div>
+
+      <div class="campo">
+        <center><input type="datetime-local" name="time" placeholder="Qual a data e hora do evento?" id="time" class="datetime-input" required=""></center>
+      </div>
+
+      <div class="botao">
+        <center><input type="submit" value="Enviar"></center>
+      </div>
+
+      <div class="botao">
+        <center><input type="reset" value="Limpar"></center>
+      </div>
 
     </form>
+
   </body>
 </html>

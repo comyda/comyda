@@ -31,7 +31,7 @@ header {
       padding-bottom: 4px !important;
   }
 
-  body {
+body {
       margin: 0;
       padding: 0;
       font-family: 'Open Sans', sans-serif;
@@ -41,7 +41,7 @@ header {
 
   }
 
-  #rodape {
+#rodape {
       color: #696969;
       background:  #FAEBD7;
       position:absolute;
@@ -52,11 +52,13 @@ header {
       font-size: 14px;
   }
 
-  a {
+a {
     background: #FAEBD7;
     color: #696969;
 
     }
 table {
-
-}
+          margin: auto;
+          margin-top: 20px;
+          border-color: black;
+      }
