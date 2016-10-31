@@ -20,7 +20,7 @@
           Eventos
         </th>
         <th>
-          Horário
+        Data e Hora
         </th>
       </tr>
 
@@ -29,7 +29,7 @@
       <% for(var i=0; i<eventos.length; i++) {%>
      <tr>
        <td>
-         <%= eventos[i].name%>
+        <a href="/eventos/<%= eventos[i]._id%>"> <%= eventos[i].name%> </a>
        </td>
        <td>
         <%= eventos[i].timeAsString%>

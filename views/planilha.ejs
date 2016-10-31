@@ -1,43 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-		  <link rel="stylesheet" href="../public/planilha.css">
-		  <title>formulario</title>
-		          <meta charset="utf-8">
-
-			      <body>
-				      <h1><center>Formulário</center></h1>
-
-
-					  <form name="input" action="html_form_action.asp"  method="get">
-<h2>Quer participar do evento?</h2>
-<div class="campo">
-
-						  <center><input type="text" name="firstname" placeholder="Nome do Participante" id="seu nome" required></center>
-</div>
-
-<div class="campo">
-
-              <h3>Restrição alimentar</h3>
-						  <center>Sim<input type="checkbox" name="sim"></center>
-
-              <center>Não<input type="checkbox" name="não"></center>
-
-              <center><input type="text" name="restriçao alimentar" placeholder="Se sim, qual é sua restrição alimentar?" id="Restrinção"></center>
-</div>
-
-<div class="botao">
-              <center><input type="submit" value="Enviar"></center>
-</div>
-
-<div class="botao">
-              <center><input type="reset" value="Limpar"></center>
-</div>
-            </form>
+    <meta charset="utf-8">
+    <title> Formulario em Planejamento</title>
+    <link rel="stylesheet" href="../planilha.css">
   </head>
-			      </body>
-
-
-
-
+  <body>
+<h1>Vai participar do evento?</h1>
+    <form
+       name="input" action="html_form_action.asp"  method="get"> </a>
+        Nome:
+        <input type="text" name="firstname">
+        Restrição alimentar
+        Sim
+	       <input type="checkbox" name="sim">
+        Não
+        <input type="checkbox" name="não">
+        <input type="submit" value="Enviar">
+    </form>
+  </body>
 </html>

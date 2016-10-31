@@ -51,7 +51,11 @@ app.get('/', function (req, res) {
 
 app.get('/evento', function(req, res) {
 	res.render('criar');
-})
+});
+
+app.get('/eventos/:id', function(req, res) {
+	res.render('planilha');
+});
 
 app.post('/eventos', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';

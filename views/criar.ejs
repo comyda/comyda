@@ -3,36 +3,30 @@
   <head>
     <link rel="stylesheet" href="criar.css">
     <meta charset="utf-8">
-    <title></title>
   </head>
   <body>
-    <h1><center>Formulário</center></h1>
-
-    <form name="input" action="/eventos" method="post">
-
-      <h2>OxiFood Delivers</h2>
-
+    <form
+      name="input" action="/eventos" method="post">
+      <h2>Crie seu evento aqui!</h2>
       <div class="campo">
-        <center><input type="text" name="ownername" placeholder="Nome do criador do evento" id="name"></center>
+        <input type="text" name="ownername" placeholder="Quem está criando o evento?"
+          id="name">
       </div>
-
       <div class="campo">
-        <center><input type="text" name="name" placeholder="Qual o nome do evento?" id="event" required></center>
+        <input type="text" name="name" placeholder="Qual o nome do evento?"
+          id="event" required>
       </div>
-
       <div class="campo">
-        <center><input type="datetime-local" name="time" placeholder="Qual a data e hora do evento?" id="time" class="datetime-input" required=""></center>
+        <input type="datetime-local" name="time"
+          placeholder="Qual a data e hora do evento?"
+            id="time" class="datetime-input" required="">
       </div>
-
       <div class="botao">
-        <center><input type="submit" value="Enviar"></center>
+        <input type="submit" value="Enviar">
       </div>
-
       <div class="botao">
-        <center><input type="reset" value="Limpar"></center>
+        <input type="reset" value="Limpar">
       </div>
-
     </form>
-
   </body>
 </html>
