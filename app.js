@@ -34,18 +34,13 @@ app.get('/', function (req, res) {
 				if (minutes < 10) {
 					minutes = '0' + minutes;
 				}
-
 				docs[i].timeAsString = day + '/' + month + ' ' + hours+ ':'+ minutes;
+				}
 
+							res.render('novaindex', {eventos:docs});
+				   });
 
-			}
-
-			res.render('novaindex', {eventos:docs});
-   });
-
-
-
-	  db.close();
+					 db.close();
 	});
 });
 
@@ -61,9 +56,9 @@ app.post('/eventos', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
 
 // Use connect method to connect to the server
-	MongoClient.connect(url, function(err, db) {
+MongoClient.connect(url, function(err, db) {
 
-		var collection = db.collection('eventos');
+	var collection = db.collection('eventos');
 
 		var event = {
 			_id: uuid.v4(),
@@ -73,13 +68,11 @@ app.post('/eventos', function (req, res) {
 		};
 
 
-		collection.insertOne(event);
-		res.redirect('/');
+						collection.insertOne(event);
+				res.redirect('/');
 
 	  db.close();
 	});
-
-
 
 });
 
