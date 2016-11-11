@@ -8,14 +8,12 @@
 <body>
   <h1>Vai participar do evento?</h1>
     <form
-       name="input" action="html_form_action.asp"  method="get"> </a>
+       name="input" action="/participar"  method="post"> </a>
       Nome:
         <input type="text" name="firstname">
-      Restrição alimentar
-        Sim
-	       <input type="checkbox" name="sim">
-        Não
-          <input type="checkbox" name="não">
+        Restrição alimentar, se sim, qual?
+          <input type="text" name="restriction">
+
         <input type="submit" value="Enviar">
     </form>
     <table border="4">
@@ -25,9 +23,23 @@
             Nome
           </th>
           <th>
-            Restricao alimentar
+          Restrição
           </th>
         </tr>
       </thead>
+      <tbody>
+        <% for(var i=0; i<participar.length; i++) {%>
+       <tr>
+         <td>
+           <%= participar[i].firstname%>
+         </td>
+         <td>
+          <%= participar[i].restriction%>
+         </td>
+
+       </tr>
+    <% } %>
+      </tbody>
+    </table>
   </body>
 </html>
