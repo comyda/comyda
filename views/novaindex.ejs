@@ -7,11 +7,9 @@
   </head>
   <body>
 <header>
-    <h1><center>oxiFood</center></h1>
-
-
-<a class="btn btn-primary" href="/evento">Criar um pedido</a>
-  <link rel="stylesheet" href="index.css">
+  <h1>oxiFood</h1>
+    <a class="btn btn-primary" href="/evento">Criar um pedido</a>
+      <link rel="stylesheet" href="index.css">
 </header>
   <table border="4">
     <thead>
@@ -23,13 +21,12 @@
         Data e Hora
         </th>
       </tr>
-
     </thead>
     <tbody>
       <% for(var i=0; i<eventos.length; i++) {%>
      <tr>
        <td>
-        <a href="/eventos/<%= eventos[i]._id%>"> <%= eventos[i].name%> </a>
+         <a href="/eventos/<%= eventos[i]._id%>"> <%= eventos[i].name%> </a>
        </td>
        <td>
         <%= eventos[i].timeAsString%>
@@ -39,10 +36,9 @@
     </tbody>
   </table>
   <div id="rodape">
-					    <center>Made in Recife!</center>
-              <center>Por Leonardo Oliveira e Rayana Gonçalves at
-              <a href="https://www.thoughtworks.com/" target="_blank" >
-              <em>Thoughtworks</em></a></center>
-  </div>
-</body>
+	   Por Leonardo Oliveira e Rayana Gonçalves at
+        <a href="https://www.thoughtworks.com/" target="_blank" >
+          <em>Thoughtworks</em></a>
+    </div>
+  </body>
 </html>

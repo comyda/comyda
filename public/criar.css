@@ -7,12 +7,12 @@ form {
 	border-radius: 4em;
 	border-color: #FF7F50;
 	cursor: pointer;
-      }
+}
 
 form div + div {
 	margin-top: 1em;
 	text-align: center;
-	    				 }
+}
 
 input, textarea {
 	font: 1em sans-serif;
@@ -21,31 +21,31 @@ input, textarea {
 	box-sizing: border-box;
 	border: 1px solid #999;
 	text-align: center;
-					    	}
+}
 
 input:focus, textarea:focus {
 	border-color: #FF7F50;
-				    								}
+}
 
 textarea {
 	vertical-align:sub;
 	height: 5em;
-					}
+}
 
 .campo {
 	margin-bottom: 2em;
   color: #FF7F50;
   cursor: pointer;
 	text-align: center;
-				}
+}
 
 h2 {
 	color: white;
  	font-size: 40px;
 	text-align: center;
 	font-family: monospace;
-	}
+}
 
-body{
+body {
   background-color: #FAEBD7;
 }
