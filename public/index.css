@@ -13,7 +13,7 @@ h2 {
 }
 
 a {
-  display:inline-block;
+ display:inline-block;
  text-decoration:none;
  padding:6px 4px;
  border:1px solid #ccc;
@@ -32,31 +32,31 @@ header {
 }
 
 body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Open Sans', sans-serif;
-      background-color: #FAEBD7;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FAEBD7;
 }
 
 #rodape {
-      color: #696969;
-      background:  #FAEBD7;
-      position:absolute;
-      bottom:0;
-      width:100%;
-      margin-top: 10px;
-      text-align: center;
-      font-size: 14px;
+    color: #696969;
+    background:  #FAEBD7;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
 }
 
 a {
-    background: #FAEBD7;
-    color: #696969;
+  background: #FAEBD7;
+  color: #696969;
 
 }
 
 table {
-          margin: auto;
-          margin-top: 20px;
-          border-color: black;
+    margin: auto;
+    margin-top: 20px;
+    border-color: black;
 }
