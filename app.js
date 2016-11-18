@@ -51,10 +51,10 @@ app.get('/eventos/:id', function (req, res) {
 	MongoClient.connect(url, function(err, db) {
 
 		var collection = db.collection('participar');
-		collection.find({}).toArray(function(err, docs) {
+		collection.find({eventid:req.params.id}).toArray(function(err, docs) {
 
 
-							res.render('planilha', {participar:docs});
+							res.render('planilha', {participar:docs, eventid:req.params.id});
 				   });
 
 					 db.close();
@@ -66,9 +66,7 @@ app.get('/evento', function(req, res) {
 	res.render('criar');
 });
 
-app.get('/eventos/:id', function(req, res) {
-	res.render('planilha');
-});
+
 
 
 
@@ -99,6 +97,8 @@ MongoClient.connect(url, function(err, db) {
 app.post('/participar', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
 
+	console.log(req);
+
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, db) {
 
@@ -106,6 +106,7 @@ MongoClient.connect(url, function(err, db) {
 
 		var dados = {
       _id: uuid.v4(),
+			eventid: req.body.eventid,
 			firstname: req.body.firstname,
 			restriction: req.body.restriction
 		};
