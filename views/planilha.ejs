@@ -9,6 +9,7 @@
   <h1>Vai participar do evento?</h1>
     <form
      name="input" action="/participar"  method="post">
+     <input type="hidden" name="eventid" value="<%= eventid%>">
       <div>
         <input type="text" name="firstname" placeholder="Nome" required=""></div>
       <div>

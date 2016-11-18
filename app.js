@@ -51,10 +51,10 @@ app.get('/eventos/:id', function (req, res) {
 	MongoClient.connect(url, function(err, db) {
 
 		var collection = db.collection('participar');
-		collection.find({}).toArray(function(err, docs) {
+		collection.find({eventid:req.params.id}).toArray(function(err, docs) {
 
 
-							res.render('planilha', {participar:docs});
+							res.render('planilha', {participar:docs, eventid:req.params.id});
 				   });
 
 					 db.close();
@@ -66,9 +66,9 @@ app.get('/evento', function(req, res) {
 	res.render('criar');
 });
 
-app.get('/eventos/:id', function(req, res) {
-	res.render('planilha');
-});
+
+
+
 
 app.post('/eventos', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
@@ -87,7 +87,7 @@ MongoClient.connect(url, function(err, db) {
 
 
 						collection.insertOne(event);
-				res.redirect('/participar');
+				res.redirect('/');
 
 	  db.close();
 	});
@@ -97,12 +97,16 @@ MongoClient.connect(url, function(err, db) {
 app.post('/participar', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
 
+	console.log(req);
+
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, db) {
 
 	var collection = db.collection('participar');
 
 		var dados = {
+      _id: uuid.v4(),
+			eventid: req.body.eventid,
 			firstname: req.body.firstname,
 			restriction: req.body.restriction
 		};
@@ -114,6 +118,7 @@ MongoClient.connect(url, function(err, db) {
 	});
 
 });
+
 
 app.listen(3000, function () {
 	  console.log('Example app listening on port 3000!');
