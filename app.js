@@ -70,6 +70,8 @@ app.get('/eventos/:id', function(req, res) {
 	res.render('planilha');
 });
 
+
+
 app.post('/eventos', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
 
@@ -87,7 +89,7 @@ MongoClient.connect(url, function(err, db) {
 
 
 						collection.insertOne(event);
-				res.redirect('/participar');
+				res.redirect('/');
 
 	  db.close();
 	});
@@ -103,6 +105,7 @@ MongoClient.connect(url, function(err, db) {
 	var collection = db.collection('participar');
 
 		var dados = {
+      _id: uuid.v4(),
 			firstname: req.body.firstname,
 			restriction: req.body.restriction
 		};
@@ -114,6 +117,7 @@ MongoClient.connect(url, function(err, db) {
 	});
 
 });
+
 
 app.listen(3000, function () {
 	  console.log('Example app listening on port 3000!');
