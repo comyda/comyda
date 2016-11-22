@@ -40,7 +40,7 @@ app.get('/', function (req, res) {
 							res.render('novaindex', {eventos:docs});
 				   });
 
-					 db.close();
+		db.close();
 	});
 });
 
@@ -53,7 +53,6 @@ app.get('/eventos/:id', function (req, res) {
 		var collection = db.collection('participar');
 		collection.find({eventid:req.params.id}).toArray(function(err, docs) {
 
-
 							res.render('planilha', {participar:docs, eventid:req.params.id});
 				   });
 
@@ -65,10 +64,6 @@ app.get('/eventos/:id', function (req, res) {
 app.get('/evento', function(req, res) {
 	res.render('criar');
 });
-
-
-
-
 
 app.post('/eventos', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
@@ -85,41 +80,38 @@ MongoClient.connect(url, function(err, db) {
 			time: new Date(req.body.time)
 		};
 
+					collection.insertOne(event);
+					res.redirect('/');
 
-						collection.insertOne(event);
-				res.redirect('/');
+				db.close();
 
-	  db.close();
 	});
-
 });
 
 app.post('/participar', function (req, res) {
 	var url = 'mongodb://localhost:27017/oxifood';
+		console.log(req);
 
-	console.log(req);
+		// Use connect method to connect to the server
+		MongoClient.connect(url, function(err, db) {
 
-// Use connect method to connect to the server
-MongoClient.connect(url, function(err, db) {
+var collection = db.collection('participar');
 
-	var collection = db.collection('participar');
+				var dados = {
+		    _id: uuid.v4(),
+				eventid: req.body.eventid,
+				firstname: req.body.firstname,
+				restriction: req.body.restriction
+				};
 
-		var dados = {
-      _id: uuid.v4(),
-			eventid: req.body.eventid,
-			firstname: req.body.firstname,
-			restriction: req.body.restriction
-		};
+							collection.insertOne(dados);
+						res.redirect('/');
 
-					collection.insertOne(dados);
-				res.redirect('/');
-
-	  db.close();
-	});
-
+			  db.close();
+		});
 });
 
 
 app.listen(3000, function () {
-	  console.log('Example app listening on port 3000!');
+	console.log('Example app listening on port 3000!');
 });

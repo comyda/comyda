@@ -2,40 +2,41 @@
 <html>
   <head>
     <link rel="stylesheet" href="criar.css">
-    <meta charset="utf-8">
-      <title>Crie seu evento</title>
+     <meta charset="utf-8">
+        <title>Crie seu evento</title>
   </head>
   <body>
     <form
       name="input" action="/eventos" method="post">
-      <h2>Crie seu evento aqui</h2>
-      <div
+        <h2>Crie seu evento aqui</h2>
+        <div
         class="campo">
           <input type="text" name="ownername" placeholder="Quem está criando o evento?"
             id="name">
-      </div>
-      <div
-        class="campo">
-          <input type="text" name="name" placeholder="Qual o nome do evento?"
-            id="event" required>
-      </div>
-      <div
-        class="campo">
-          <input type="datetime-local" name="time"
-            placeholder="Qual a data e hora do evento?"
-              id="time" class="datetime-input" required="">
-      <div
-        class="botao">
-          <input type="submit" value="Enviar">
-      </div>
-      <div
-        class="botao">
-          <input type="reset" value="Limpar">
-      </div>
-      <div
-        class="botao">
-          <input type="submit" value="Ir para o evento">
-      </div>
+        </div>
+        <div
+          class="campo">
+            <input type="text" name="name" placeholder="Qual o nome do evento?"
+              id="event" required="">
+        </div>
+        <div
+          class="campo">
+            <input type="datetime-local" name="time"
+              placeholder="Data e hora"
+                id="time" class="datetime-input" required="">
+        </div>
+        <div
+          class="botao">
+            <input type="submit" value="Enviar">
+        </div>
+        <div
+          class="botao">
+            <input type="reset" value="Limpar">
+        </div>
+        <div
+          class="botao">
+            <input type="submit" value="Ir para o evento">
+        </div>
     </form>
   </body>
 </html>

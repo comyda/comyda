@@ -9,14 +9,23 @@
   <h1>Vai participar do evento?</h1>
     <form
      name="input" action="/participar"  method="post">
-     <input type="hidden" name="eventid" value="<%= eventid%>">
-      <div>
-        <input type="text" name="firstname" placeholder="Nome" required=""></div>
-      <div>
-          <input type="text" name="restriction" placeholder="Restrição alimentar? Se sim, qual?"></div>
+     <input type="hidden" name="eventid" value="<%=eventid%>">
 
-      <div>  <input type="submit" value="Enviar"></div>
-    </form>
+      <div>
+        <input type="text" name="firstname"
+        placeholder="Nome" required="">
+      </div>
+
+      <div>
+          <input type="text" name="restriction"
+            placeholder="Restrição alimentar? Se sim, qual?">
+      </div>
+
+      <div>
+         <input type="submit" value="Enviar">
+       </div>
+     </form>
+
     <table border="4">
       <thead>
         <tr>
@@ -37,10 +46,10 @@
          <td>
           <%= participar[i].restriction%>
          </td>
-
        </tr>
     <% } %>
       </tbody>
     </table>
+
   </body>
 </html>
