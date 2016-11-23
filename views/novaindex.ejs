@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="utf-8">
+    <meta charset="utf-8">
       <title>oxiFood</title>
-      <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="index.css">
   </head>
   <body>
-<header>
-  <h1>oxiFood</h1>
-    <a class="btn btn-primary" href="/evento">Criar um pedido</a>
-      <link rel="stylesheet" href="index.css">
-</header>
-  <table border="4">
-    <thead>
-      <tr>
-        <th>
-          Eventos
-        </th>
-        <th>
-        Data e Hora
-        </th>
-      </tr>
+    <header>
+      <h1>oxiFood</h1>
+        <a  class="btn btn-primary" href="/evento">Criar um evento</a>
+          <link rel="stylesheet" href="index.css">
+    </header>
+  <h2>Participe do evento clicando nele!</h2>
+    <table border="4">
+      <thead>
+        <tr>
+          <th>
+            Criador
+          </th>
+          <th>
+            Evento
+          </th>
+          <th>
+            Data/hora
+          </th>
+        </tr>
     </thead>
     <tbody>
       <% for(var i=0; i<eventos.length; i++) {%>
-     <tr>
+       <tr>
        <td>
-         <a href="/eventos/<%= eventos[i]._id%>"> <%= eventos[i].name%> </a>
+         <%= eventos[i].ownername%>
        </td>
        <td>
-        <%= eventos[i].timeAsString%>
+         <a href="/eventos/<%= eventos[i]._id%>"><%= eventos[i].name%></a>
+       </td>
+       <td>
+         <%= eventos[i].timeAsString%>
        </td>
      </tr>
   <% } %>
     </tbody>
   </table>
   <div id="rodape">
-	   Por Leonardo Oliveira e Rayana Gonçalves at
+    <p>Made in Recife, oxi!</p>
+      Por Leonardo Oliveira e Rayana Gonçalves at
         <a href="https://www.thoughtworks.com/" target="_blank" >
           <em>Thoughtworks</em></a>
     </div>
