@@ -40,16 +40,16 @@ body {
     font-size: 14px;
 }
 
-a {
- display:inline-block;
- text-decoration:none;
- padding:6px 4px;
- border:1px solid #ccc;
- background-color:#FAEBD7;
- color:black;
-
-font:15px arial, sans-serif;
- line-height: 10px;
+a.button {
+  display: inline-block;
+  color: black;
+  background: #FAEBD7;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  outline: none;
+  font-family:monospace;
+  font-size: 18px;
 }
 
 table {
@@ -70,19 +70,12 @@ table {
   font-size: 19px;
 }
 
-p {
-    display: block;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    color:gray;
+a {
+  text-align: center;
+  color: black;
 }
 
-button {
-  display: block;
-  -webkit-margin-before: 1em;
-  -webkit-margin-after: 1em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
+p {
+  text-align: center;
+  text-align: inherit;
 }
