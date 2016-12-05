@@ -16,6 +16,9 @@
       <thead>
         <tr>
           <th>
+            Restaurante
+          </th>
+          <th>
             Criador
           </th>
           <th>
@@ -29,6 +32,8 @@
     <tbody>
       <% for(var i=0; i<eventos.length; i++) {%>
        <tr>
+        <td>
+          <%= eventos[i].restaurant%> 
        <td>
          <%= eventos[i].ownername%>
        </td>

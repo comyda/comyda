@@ -72,7 +72,8 @@ var url = 'mongodb://localhost:27017/oxifood';
 
  		var event = {
  			_id: uuid.v4(),
- 			name: req.body.name,
+      restaurant: req.body.restaurant,
+      name: req.body.name,
  			ownername: req.body.ownername,
  			time: new Date(req.body.time)
  		};
