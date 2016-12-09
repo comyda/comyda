@@ -59,6 +59,10 @@ var url = 'mongodb://localhost:27017/oxifood';
  });
 
 
+ app.get('/javascript.ejs', function(req, res) {
+  res.render('javascript');
+});
+
  app.get('/evento', function(req, res) {
  	res.render('criar');
  });
