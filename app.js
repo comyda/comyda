@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var calcular = require('./services/calcular');
 var app = express();
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
@@ -59,9 +60,23 @@ var url = 'mongodb://localhost:27017/oxifood';
  });
 
 
- app.get('/javascript.ejs', function(req, res) {
-  res.render('javascript');
-});
+ app.get('/calcular/event/:id', function(req, res) {
+   var url = 'mongodb://localhost:27017/oxifood';
+
+  // Use connect method to connect to the server
+  	MongoClient.connect(url, function(err, db) {
+
+  	   var collection = db.collection('participar');
+       collection.aggregate([{$match: {'eventid': req.params.id} }, {$group : {_id : "$eventid", subscribers : {$sum : 1 }}}]).toArray(function(err, docs) {
+        var pizzas = calcular.getPizzas(docs[0].subscribers);
+        var guarana = calcular.getGuarana(docs[0].subscribers);
+        var valorTotal = pizzas.total + guarana.total;
+          res.render('javascript', {pizzas: pizzas, guarana: guarana, valor: valorTotal});
+  	   });
+
+  		 db.close();
+  	});
+  });
 
  app.get('/evento', function(req, res) {
  	res.render('criar');
@@ -105,6 +120,7 @@ var url = 'mongodb://localhost:27017/oxifood';
 	 				firstname: req.body.firstname,
 	 				restriction: req.body.restriction
  				};
+        console.log(dados);
 
  				collection.insertOne(dados);
 				res.redirect('/');
