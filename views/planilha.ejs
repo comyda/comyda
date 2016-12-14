@@ -47,9 +47,17 @@
           <%= participar[i].restriction%>
          </td>
        </tr>
-    <% } %>
+        <% } %>
+    <tr>
+      <td>
+        total:
+      </td>
+      <td>
+        <%= participar.length%>
+      </td>
+    </tr>
       </tbody>
     </table>
-  <a class="button" href="/javascript.ejs">Calcular resultado</a>
+  <a class="button" href="/calcular/event/<%=eventid%>">Calcular resultado</a>
   </body>
 </html>

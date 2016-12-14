@@ -6,56 +6,45 @@
     <title>Começando o código</title>
   </head>
   <body>
-    <script>
-var resPizPeo;
-var resGuaPeo;
-var resSalPeo;
 
-
-var geralPeo = function (Peoples) {
-
-  resPizPeo = Peoples/4;
-    console.log("O numero de pizzas vai ser de " + resPizPeo);
-
-  resGuaPeo = Peoples/8;
-    console.log("O numero de guaranas vai ser de " + resGuaPeo);
-
-  resSalPeo = Peoples * 8;
-    console.log("O numero de salgados vai ser de " + resSalPeo);
-
-
-
-var valorPiz = function () {
-  var result = 27.00 * resPizPeo;
-  console.log("O total do valor de pizzas é de : R$" + result);
-  return result ;
-}
-valorPiz();
-
-
-var valorGua = function () {
-  var result = 8.00 * resGuaPeo ;
-  console.log("O total do valor de guaranás é de : R$" + result);
-  return result ;
-}
-valorGua();
-
-
-var valorSal = function () {
- var result = 0.50 * resSalPeo;
- console.log("O total do valor de salgados é de : R$" + result);
- return result;
-}
-valorSal();
-
-
-console.log("O valor total da compra é de R$" + (valorPiz()+valorSal()+valorGua()));
-console.log("O valor total da compra é de R$" + (valorPiz()+valorGua()));
-
-}
-
-
-    </script>
+<table>
+  <tr>
+    <td>
+      Total de pizzas
+    </td>
+    <td>
+      <%=pizzas.numPizza%>
+    </td>
+    <td>
+      Subtotal
+    </td>
+    <td>
+      <%=pizzas.total%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Total de guaranás
+    </td>
+    <td>
+      <%=guarana.numGuarana%>
+    </td>
+    <td>
+      Subtotal
+    </td>
+    <td>
+      <%=guarana.total%>
+    </td>
+  </tr>
+    <tr>
+      <td>
+        total
+      </td>
+      <td>
+        <%=valor%>
+      </td>
+    </tr>
+</table>
 
   </body>
 </html>
