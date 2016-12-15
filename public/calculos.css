@@ -7,3 +7,7 @@ table {
   background-color: #FF7F50	;
   font-family:monospace;
 }
+
+a {
+  right: 10px;
+}
