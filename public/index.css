@@ -56,6 +56,7 @@ table {
     margin: auto;
     margin-top: 20px;
     border-color: black;
+    font-size: 19px;
 }
 
 h2 {
@@ -66,9 +67,6 @@ h2 {
   font-size: 30px;
 }
 
-table {
-  font-size: 19px;
-}
 
 a {
   text-align: center;
