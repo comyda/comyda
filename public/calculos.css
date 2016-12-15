@@ -1,0 +1,9 @@
+table {
+  margin: auto;
+  margin-top: 20px;
+  border-color: black;
+  font-size: 24px;
+  border-style:groove;
+  background-color: #FF6347;
+  font-family:monospace;
+}
