@@ -25,7 +25,7 @@ header {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     background-color: #FAEBD7;
 }
 
@@ -56,7 +56,7 @@ table {
     margin: auto;
     margin-top: 20px;
     border-color: black;
-    font-size: 19px;
+    font-size: 19px
 }
 
 h2 {
@@ -71,9 +71,4 @@ h2 {
 a {
   text-align: center;
   color: black;
-}
-
-p {
-  text-align: center;
-  text-align: inherit;
 }

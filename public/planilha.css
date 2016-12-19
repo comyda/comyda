@@ -60,3 +60,21 @@ table {
   font-family:monospace;
   font-size: 15px;
 }
+
+
+
+#rodape {
+color: #696969;
+background:  #FAEBD7;
+position:absolute;
+bottom:0;
+width:100%;
+margin-top: 10px;
+text-align: center;
+font-size: 14px;
+}
+
+a {
+  text-align: center;
+  color: #696969;
+}

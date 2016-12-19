@@ -48,6 +48,7 @@ h2 {
 
 body {
 	background-color: #FAEBD7;
+	font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 }
 
 select {
@@ -56,4 +57,21 @@ select {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	border: 1px solid #999;
+}
+
+
+#rodape {
+color: #696969;
+background:  #FAEBD7;
+position:absolute;
+bottom:0;
+width:100%;
+margin-top: 10px;
+text-align: center;
+font-size: 14px;
+}
+
+a {
+  text-align: center;
+  color: #696969;
 }
