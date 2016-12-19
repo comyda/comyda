@@ -34,7 +34,7 @@ var url = 'mongodb://localhost:27017/oxifood';
  				if (minutes < 10) {
  					minutes = '0' + minutes;
  				}
- 				docs[i].timeAsString = day + '/' + month + ' ' + hours+ ':'+ minutes;
+ 				docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
  				}
  			res.render('novaindex', {eventos:docs});
  				   });
