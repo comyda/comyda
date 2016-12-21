@@ -29,18 +29,18 @@ body {
 }
 
 form div {
-		margin-top:1em;
-		text-align:center;
+  margin-top:1em;
+	text-align:center;
 }
 
 input, textarea {
-			font: 1.2em sans-serif;
-			width: 280px;
-			border: 1px solid #999
-			text-align: center;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-      text-align: center;
+  font: 1.2em sans-serif;
+	width: 280px;
+	border: 1px solid #999
+	text-align: center;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+  text-align: center;
 }
 
 table {
@@ -51,6 +51,7 @@ table {
   margin-top: 20px;
   text-align: center;
 }
+
 .button {
   color: white;
   background: #FF7F50;
@@ -62,14 +63,14 @@ table {
 }
 
 #rodape {
-color: #696969;
-background:  #FAEBD7;
-position:absolute;
-bottom:0;
-width:100%;
-margin-top: 10px;
-text-align: center;
-font-size: 14px;
+  color: #696969;
+  background:  #FAEBD7;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
 }
 
 a {

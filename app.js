@@ -17,7 +17,7 @@ var url = 'mongodb://localhost:27017/oxifood';
 
  	var collection = db.collection('eventos');
  		collection.find({}).toArray(function(err, docs) {
- for (var i = 0; i < docs.length; i++) {
+      for (var i = 0; i < docs.length; i++) {
  				var day = docs[i].time.getDate();
  				if (day < 10) {
  					day = '0' + day;
@@ -36,7 +36,7 @@ var url = 'mongodb://localhost:27017/oxifood';
  				}
  				docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
  				}
- 			res.render('novaindex', {eventos:docs});
+ 			res.render('index', {eventos:docs});
  				   });
 
  		db.close();
@@ -52,7 +52,7 @@ var url = 'mongodb://localhost:27017/oxifood';
  	var collection = db.collection('participar');
  		collection.find({eventid:req.params.id}).toArray(function(err, docs) {
 
- 							res.render('planilha', {participar:docs, eventid:req.params.id});
+ 							res.render('participar', {participar:docs, eventid:req.params.id});
  				   });
 
  					 db.close();
@@ -71,7 +71,7 @@ var url = 'mongodb://localhost:27017/oxifood';
         var pizzas = calcular.getPizzas(docs[0].subscribers);
         var guarana = calcular.getGuarana(docs[0].subscribers);
         var valorTotal = pizzas.total + guarana.total;
-          res.render('javascript', {pizzas: pizzas, guarana: guarana, valor: valorTotal});
+          res.render('tabeladecalculo', {pizzas: pizzas, guarana: guarana, valor: valorTotal});
   	   });
 
   		 db.close();
@@ -79,7 +79,7 @@ var url = 'mongodb://localhost:27017/oxifood';
   });
 
  app.get('/evento', function(req, res) {
- 	res.render('criar');
+ 	res.render('criarevento');
  });
 
  app.post('/eventos', function (req, res) {

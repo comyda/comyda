@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
-      <title>oxiFood</title>
-        <link rel="stylesheet" href="index.css">
+    <title>oxiFood</title>
+    <link rel="stylesheet" href="index.css">
   </head>
   <body>
+
     <header>
       <h1>oxiFood</h1>
-        <a  class="button" href="/evento">Criar evento</a>
+      <a  class="button" href="/evento">Criar evento</a>
     </header>
+
   <h2>Participe do evento clicando nele!</h2>
-    <table border="4">
-      <thead>
-        <tr>
-          <th>
-            Restaurante
-          </th>
-          <th>
-            Criador
-          </th>
-          <th>
-            Evento
-          </th>
-          <th>
-            Data/hora
-          </th>
-        </tr>
-    </thead>
-    <tbody>
-      <% for(var i=0; i<eventos.length; i++) {%>
-       <tr>
-        <td>
-          <%= eventos[i].restaurant%>
-        </td>
+  <!--TABELA PARA LISTAGEM DE EVENTOS-->
+  <table border="4">
+  <thead>
+    <tr>
+      <th>
+        Restaurante
+      </th>
+      <th>
+        Criador
+      </th>
+      <th>
+        Evento
+      </th>
+      <th>
+        Data/hora
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% for(var i=0; i<eventos.length; i++) {%>
+    <tr>
+      <td>
+        <%= eventos[i].restaurant%>
+      </td>
        <td>
          <%= eventos[i].ownername%>
        </td>
@@ -45,8 +50,11 @@
        </td>
      </tr>
   <% } %>
-    </tbody>
+  </tbody>
   </table>
+  <!--FIM DA TABELA-->
+
+  <!--RODAPÉ-->
   <footer>
     <div id="rodape">
       <p>Made in Recife, oxi!</p>
@@ -55,5 +63,6 @@
       Thoughtworks</a></p>
     </div>
   </footer>
+ <!--FIM DO RODAPÉ-->
   </body>
 </html>

@@ -12,32 +12,30 @@ h2 {
   font-style: italic;
 }
 
-
-
 header {
-      background: #FF7F50;
-      color: #fff;
-      text-align: center;
-      padding-top: 4px !important;
-      padding-bottom: 4px !important;
+  background: #FF7F50;
+  color: #fff;
+  text-align: center;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    background-color: #FAEBD7;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+  background-color: #FAEBD7;
 }
 
 #rodape {
-    color: #696969;
-    background:  #FAEBD7;
-    position:absolute;
-    bottom:0;
-    width:100%;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 14px;
+  color: #696969;
+  background:  #FAEBD7;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
 }
 
 a.button {
@@ -53,10 +51,10 @@ a.button {
 }
 
 table {
-    margin: auto;
-    margin-top: 20px;
-    border-color: black;
-    font-size: 19px
+  margin: auto;
+  margin-top: 20px;
+  border-color: black;
+  font-size: 19px
 }
 
 h2 {

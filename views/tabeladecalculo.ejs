@@ -3,8 +3,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link  rel="stylesheet" href="/calculos.css">
-    <table border="4">
+    <link  rel="stylesheet" href="/tabeladecalculo.css">
+  </head>
+  <body>
+
+  <!--TABELA DE CALCULO-->
+ <table border="4">
   <tr>
     <td style="border-color: rgba(123, 123, 123, 0)">
       Total de pizzas:
@@ -19,9 +23,10 @@
       R$<%=pizzas.total%>
     </td>
   </tr>
+
   <tr>
     <td style="border-color: rgba(123, 123, 123, 0)">
-      Total de guaranás:
+      Total de refrigerantes:
     </td>
     <td>
       <%=guarana.numGuarana%>
@@ -33,27 +38,32 @@
       R$<%=guarana.total%>
     </td>
   </tr>
-    <tr>
-      <td style="border-color: rgba(123, 123, 123, 0)">
-      </td>
-      <td style="border-color: rgba(123, 123, 123, 0)">
-      </td>
-      <td style="border-color: rgba(123, 123, 123, 0)">
-        Total:
-      </td>
-        <td>
-        R$<%=valor%>
-      </td>
-    </tr>
-</table>
-<footer>
+
+  <tr>
+    <td style="border-color: rgba(123, 123, 123, 0)">
+    </td>
+    <td style="border-color: rgba(123, 123, 123, 0)">
+    </td>
+    <td style="border-color: rgba(123, 123, 123, 0)">
+      Total:
+    </td>
+    <td>
+      R$<%=valor%>
+    </td>
+  </tr>
+ </table>
+ <!--FIM DA TABELA-->
+
+ <!--RODAPE-->
+ <footer>
   <div id="rodape">
     <p>Made in Recife, oxi!</p>
     <p>Por Leonardo Oliveira e Rayana Gonçalves at
     <a href="https://www.thoughtworks.com/" target="_blank" >
     Thoughtworks</a></p>
   </div>
-</footer>
+ </footer>
+ <!--RODAPE-->
 
   </body>
 </html>
