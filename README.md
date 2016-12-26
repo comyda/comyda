@@ -1,2 +1,2 @@
 # comyda
-Aplicação para auxiliar o pedido de comida para eventos
+oxiFood é uma aplicação pra facilitar a solicitação coletiva de comida para eventos!
