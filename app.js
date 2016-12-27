@@ -107,7 +107,7 @@ var url = 'mongodb://localhost:27017/oxifood';
 
  app.post('/participar', function (req, res) {
  	var url = 'mongodb://localhost:27017/oxifood';
- 		console.log(req);
+
 
  		// Use connect method to connect to the server
  		MongoClient.connect(url, function(err, db) {
@@ -120,7 +120,6 @@ var url = 'mongodb://localhost:27017/oxifood';
 	 				firstname: req.body.firstname,
 	 				restriction: req.body.restriction
  				};
-        console.log(dados);
 
  				collection.insertOne(dados);
 				res.redirect('/');
