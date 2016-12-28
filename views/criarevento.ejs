@@ -10,18 +10,20 @@
     <!--FORMULARIO PARA CRIAÇAO DE EVENTOS-->
     <form
       name="input" action="/eventos" method="post">
-    <h2>Crie seu evento aqui</h2>
+    <h2>Criar evento</h2>
+
     <div
       <form method="post" action="cadastrar-enquete.php">
       <center><select name="restaurant">
       <option value selected>Selecione o restaurante</option>
       <option value="Pizzaria Atlântico">Pizzaria Atlântico</option>
+      <option value="Famiglia Lucco">Famiglia Lucco</option>
       </select></center>
     </div>
 
     <div
       class="campo">
-      <input type="text" name="ownername" placeholder="Quem está criando o evento?"
+      <input type="text" name="ownername" placeholder="Qual o seu nome?"
       id="name">
     </div>
 
@@ -34,7 +36,7 @@
     <div
       class="campo">
       <input type="datetime-local" name="time"
-      placeholder="Data e hora"
+      placeholder="Qual horário esse pedido termina?"
       id="time" class="datetime-input" required="">
     </div>
 
