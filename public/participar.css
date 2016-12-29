@@ -98,3 +98,7 @@ html,
 body{
   height: 100%;
 }
+
+#sair {
+  font-size: 30px;
+}

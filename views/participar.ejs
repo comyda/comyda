@@ -68,8 +68,8 @@
           <%= participar[i].flavor%>
         </td>
         <td>
-          <div class="button-container">
-            <a class="button" name="exit" href="/eventos/<%=eventid%>?_method=DELETE">Sair</a>
+          <div class="button-container" id="sair">
+            <a class="button" name="exit" href="/participar/<%=participar[i]._id%>?_method=DELETE">Sair</a>
               <%= participar[i].exit%>
           </div>
         </td>
