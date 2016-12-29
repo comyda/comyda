@@ -93,37 +93,25 @@ var url = 'mongodb://localhost:27017/oxifood';
   var url = 'mongodb://localhost:27017/oxifood';
     MongoClient.connect(url, function(err, db) {
 
-  			var collection = db.collection('participar');
-      collection.remove({"eventid": req.params.id});
+  			var collection = db.collection('eventos');
+      collection.remove({"_id": req.params.id});
         res.redirect('/');
 
         db.close();
     });
   });
 
-app.delete('/event/:id', function(req,res) {
-var url = 'mongodb://localhost:27017/oxifood';
-  MongoClient.connect(url, function(err, db) {
+  app.delete('/participar/:id', function(req,res) {
+  var url = 'mongodb://localhost:27017/oxifood';
+    MongoClient.connect(url, function(err, db) {
 
-			var collection = db.collection('eventos');
-    collection.remove({"_id": req.params.id});
-      res.redirect('/');
+  			var collection = db.collection('participar');
+      collection.remove({"_id": req.params.id});
+        res.redirect('/');
 
-      db.close();
+        db.close();
+    });
   });
-});
-
-app.delete('/participar/:id', function(req,res) {
-var url = 'mongodb://localhost:27017/oxifood';
-  MongoClient.connect(url, function(err, db) {
-
-			var collection = db.collection('participar');
-    collection.remove({"_id": req.params.id});
-      res.redirect('/');
-
-      db.close();
-  });
-});
 
  app.get('/evento', function(req, res) {
  	res.render('criarevento');
@@ -165,8 +153,7 @@ var url = 'mongodb://localhost:27017/oxifood';
 	 				eventid: req.body.eventid,
 	 				firstname: req.body.firstname,
 	 				restriction: req.body.restriction,
-          flavor: req.body.flavor,
-          exit: req.body.exit
+          flavor: req.body.flavor
         };
 
         collection.insertOne(dados);
