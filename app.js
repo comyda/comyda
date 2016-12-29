@@ -149,8 +149,6 @@ var url = 'mongodb://localhost:27017/oxifood';
  			  db.close();
  		});
  });
-
- 
- app.listen(3000, function () {
+app.listen(3000, function () {
  	console.log('Example app listening on port 3000!');
  });

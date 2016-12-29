@@ -49,7 +49,10 @@
           </th>
           <th>
            O que vai comer
-        </tr>
+           <th>
+            Sair do evento
+          </th>
+          </tr>
       </thead>
 
     <tbody>
@@ -63,6 +66,12 @@
         </td>
         <td>
           <%= participar[i].flavor%>
+        </td>
+        <td>
+          <div class="button-container">
+            <a class="button" name="exit" href="/eventos/<%=eventid%>?_method=DELETE">Sair</a>
+              <%= participar[i].exit%>
+          </div>
         </td>
         </tr>
     <% } %>
