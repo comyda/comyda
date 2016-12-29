@@ -48,7 +48,7 @@ table {
 }
 
 .button-container {
-  margin-top: 20px;
+  margin-top: 18px;
   text-align: center;
 }
 
@@ -100,5 +100,12 @@ body{
 }
 
 #sair {
-  font-size: 30px;
+  position: relative;
+  width: 20px;
+  background-color: #FAEBD7;
+  color: black;
+  font-size: 14px;
+  top: -2px;
+  font-weight: bold;
+  left: 40px;
 }

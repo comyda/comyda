@@ -22,10 +22,10 @@
 
     <div>
       <input type="text" name="restriction"
-      placeholder="Restrição alimentar? Se sim, qual?">
+      placeholder="Restrição alimentar? Se sim, qual?" required="">
     </div>
 
-    <center><select name="flavor">
+    <center><select name="flavor" >
     <option value selected>O que você vai comer?</option>
     <option value="Calabresa">Calabresa</option>
     </select></center>
@@ -68,8 +68,8 @@
           <%= participar[i].flavor%>
         </td>
         <td>
-          <div class="button-container" id="sair">
-            <a class="button" name="exit" href="/participar/<%=participar[i]._id%>?_method=DELETE">Sair</a>
+          <div>
+            <a class="button" id = "sair" name="exit" href="/participar/<%=participar[i]._id%>?_method=DELETE">Sair</a>
               <%= participar[i].exit%>
           </div>
         </td>
