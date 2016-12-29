@@ -54,7 +54,7 @@ table {
   margin: auto;
   margin-top: 20px;
   border-color: black;
-  font-size: 19px
+  font-size: 19px;
 }
 
 h2 {
@@ -69,4 +69,18 @@ h2 {
 a {
   text-align: center;
   color: black;
+}
+
+.wrapper {
+  min-height:100%;
+  position: relative;
+}
+
+.content {
+  padding-bottom: 100px;
+}
+
+html,
+body  {
+  height: 100%;
 }
