@@ -88,6 +88,18 @@ var url = 'mongodb://localhost:27017/oxifood';
   	});
   });
 
+  app.delete('/event/:id', function(req,res) {
+  var url = 'mongodb://localhost:27017/oxifood';
+    MongoClient.connect(url, function(err, db) {
+
+  			var collection = db.collection('participar');
+      collection.remove({"eventid": req.params.id});
+        res.redirect('/');
+
+        db.close();
+    });
+  });
+
 app.delete('/event/:id', function(req,res) {
 var url = 'mongodb://localhost:27017/oxifood';
   MongoClient.connect(url, function(err, db) {
@@ -99,7 +111,6 @@ var url = 'mongodb://localhost:27017/oxifood';
       db.close();
   });
 });
-
  app.get('/evento', function(req, res) {
  	res.render('criarevento');
  });
@@ -140,7 +151,8 @@ var url = 'mongodb://localhost:27017/oxifood';
 	 				eventid: req.body.eventid,
 	 				firstname: req.body.firstname,
 	 				restriction: req.body.restriction,
-          flavor: req.body.flavor
+          flavor: req.body.flavor,
+          exit: req.body.exit
         };
 
         collection.insertOne(dados);
@@ -149,6 +161,36 @@ var url = 'mongodb://localhost:27017/oxifood';
  			  db.close();
  		});
  });
+
+ app.get('/restaurante', function(req, res) {
+  res.render('addrestaurante');
+ });
+
+ app.post('/restaurante', function (req, res) {
+  var url = 'mongodb://localhost:27017/oxifood';
+
+ // Use connect method to connect to the server
+ MongoClient.connect(url, function(err, db) {
+   var collection = db.collection('comedoria');
+
+    var food = {
+
+      nameplace: req.body.nameplace,
+      phone: req.body.phone,
+      food1: req.body.food1,
+      food2: req.body.food2,
+      food3: req.body.food3,
+      food4: req.body.food4,
+    };
+
+          collection.insertOne(food);
+          res.redirect('/');
+
+        db.close();
+
+  });
+ });
+
 app.listen(3000, function () {
  	console.log('Example app listening on port 3000!');
  });
