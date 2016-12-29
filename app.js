@@ -100,7 +100,7 @@ app.delete('/participar/:id', function(req,res) {
         db.close();
     });
   });
-
+  
 app.delete('/event/:id', function(req,res) {
 var url = 'mongodb://localhost:27017/oxifood';
   MongoClient.connect(url, function(err, db) {
@@ -153,9 +153,8 @@ var url = 'mongodb://localhost:27017/oxifood';
 	 				eventid: req.body.eventid,
 	 				firstname: req.body.firstname,
 	 				restriction: req.body.restriction,
-          flavor: req.body.flavor,
-          exit: req.body.exit
-          };
+          flavor: req.body.flavor
+        };
 
         collection.insertOne(dados);
 				res.redirect('/');
@@ -163,8 +162,6 @@ var url = 'mongodb://localhost:27017/oxifood';
  			  db.close();
  		});
  });
-
-
- app.listen(3000, function () {
+app.listen(3000, function () {
  	console.log('Example app listening on port 3000!');
  });
