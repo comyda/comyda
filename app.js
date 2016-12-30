@@ -175,7 +175,7 @@ var url = 'mongodb://localhost:27017/oxifood';
    var collection = db.collection('comedoria');
 
     var food = {
-
+      _id: uuid.v4(),
       nameplace: req.body.nameplace,
       phone: req.body.phone,
       food1: req.body.food1,
