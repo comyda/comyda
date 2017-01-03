@@ -28,7 +28,7 @@ var url = 'mongodb://localhost:27017/oxifood';
  	MongoClient.connect(url, function(err, db) {
 
  	var collection = db.collection('eventos');
- 		collection.find({}).toArray(function(err, docs) {
+	collection.find({}).toArray(function(err, docs) {
       for (var i = 0; i < docs.length; i++) {
  				var day = docs[i].time.getDate();
  				if (day < 10) {
@@ -46,7 +46,7 @@ var url = 'mongodb://localhost:27017/oxifood';
  				if (minutes < 10) {
  					minutes = '0' + minutes;
  				}
-        docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
+ 				docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
  				}
  			res.render('index', {eventos:docs});
  				   });
@@ -149,7 +149,19 @@ app.get('/eventos/:id', function (req, res) {
   });
 
  app.get('/evento', function(req, res) {
- 	res.render('criarevento');
+   var url = 'mongodb://localhost:27017/oxifood';
+
+  // Use connect method to connect to the server
+  	MongoClient.connect(url, function(err, db) {
+
+  	   var collection = db.collection('comedoria');
+       collection.find({}).toArray(function(err, docs){
+
+         res.render('criarevento', {comedorias: docs});
+       })
+
+  		 db.close();
+  	});
  });
 
  app.post('/eventos', function (req, res) {

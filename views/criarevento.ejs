@@ -16,9 +16,12 @@
       class="campo">
       <select name="restaurant" required="">
       <option value selected>Selecione o restaurante</option>
-      <option value="Pizzaria Atlântico">Pizzaria Atlântico</option>
-      <option value="Famiglia Lucco">Famiglia Lucco</option>
-      </select>
+
+      <% for(var i=0; i<comedorias.length; i++) {%>
+        <option value="<%= comedorias[i]._id %>"><%= comedorias[i].nameplace %></option>
+      <% } %>
+    </select></center>
+
     </div>
 
     <div
