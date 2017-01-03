@@ -2,6 +2,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var calcular = require('./services/calcular');
+var comedoriaController = require('./controllers/comedoria');
 var app = express();
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
@@ -202,31 +203,7 @@ app.get('/eventos/:id', function (req, res) {
   res.render('addrestaurante');
  });
 
-app.post('/restaurante', function (req, res) {
-  var url = 'mongodb://localhost:27017/oxifood';
-
-  // Use connect method to connect to the server
-  MongoClient.connect(url, function(err, db) {
-    var collection = db.collection('comedoria');
-
-    var food = {
-      _id: uuid.v4(),
-      nameplace: req.body.nameplace,
-      phone: req.body.phone,
-      food1: req.body.food1,
-      food2: req.body.food2,
-      food3: req.body.food3,
-      food4: req.body.food4,
-      deliveryRate: parseFloat(req.body.deliveryRate)
-    };
-
-    collection.insertOne(food);
-    res.redirect('/');
-
-    db.close();
-  });
- });
-
+app.post('/comedorias', comedoriaController.create);
 
 app.listen(3000, function () {
  	console.log('Example app listening on port 3000!');
