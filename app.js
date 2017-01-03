@@ -149,7 +149,7 @@ app.get('/eventos/:id', function (req, res) {
   });
 
  app.get('/evento', function(req, res) {
-   var url = 'mongodb://localhost:27017/oxifood';
+ var url = 'mongodb://localhost:27017/oxifood';
 
   // Use connect method to connect to the server
   	MongoClient.connect(url, function(err, db) {
