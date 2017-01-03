@@ -70,6 +70,12 @@ select {
 	font-size: 14px;
 }
 
+@media (max-height: 760px) {
+  #rodape {
+    position: static;
+  }
+}
+
 a {
   text-align: center;
   color: #696969;
