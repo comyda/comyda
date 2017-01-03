@@ -167,12 +167,12 @@ app.get('/eventos/:id', function (req, res) {
   res.render('addrestaurante');
  });
 
-app.post('/restaurante', function (req, res) {
+app.post('/comedorias', function (req, res) {
   var url = 'mongodb://localhost:27017/oxifood';
 
   // Use connect method to connect to the server
   MongoClient.connect(url, function(err, db) {
-    var collection = db.collection('comedoria');
+    var collection = db.collection('comedorias');
 
     var food = {
       _id: uuid.v4(),
