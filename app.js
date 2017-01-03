@@ -52,7 +52,41 @@ var url = 'mongodb://localhost:27017/oxifood';
 
  		db.close();
  	});
- });
+});
+
+app.get('/', function (req, res) {
+var url = 'mongodb://localhost:27017/oxifood';
+
+ // Use connect method to connect to the server
+ 	MongoClient.connect(url, function(err, db) {
+
+ 	var collection = db.collection('eventos');
+ 		collection.find({}).toArray(function(err, docs) {
+      for (var i = 0; i < docs.length; i++) {
+ 				var day = docs[i].timeFinished.getDate();
+ 				if (day < 10) {
+ 					day = '0' + day;
+ 				}
+ 				var month = docs[i].timeFinished.getMonth()+1;
+ 				if (month < 10) {
+ 					month = '0' + month;
+ 				}
+ 				var hours = docs[i].timeFinished.getHours() + 3;
+ 				if (hours < 10) {
+ 					hours = '0' + hours;
+ 				}
+ 				var minutes = docs[i].timeFinished.getMinutes();
+ 				if (minutes < 10) {
+ 					minutes = '0' + minutes;
+ 				}
+        docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
+ 				}
+ 			res.render('index', {eventos:docs});
+ 				   });
+
+ 		db.close();
+ 	});
+});
 
 app.get('/eventos/:id', function (req, res) {
  	var url = 'mongodb://localhost:27017/oxifood';
@@ -129,7 +163,8 @@ app.get('/eventos/:id', function (req, res) {
       restaurant: req.body.restaurant,
       name: req.body.name,
  			ownername: req.body.ownername,
- 			time: new Date(req.body.time)
+ 			time: new Date(req.body.time),
+      timeFinished: new Date(req.body.timeFinished)
  		};
 
  					collection.insertOne(event);
