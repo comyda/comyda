@@ -167,12 +167,12 @@ app.get('/eventos/:id', function (req, res) {
   res.render('addrestaurante');
  });
 
- app.post('/restaurante', function (req, res) {
+app.post('/restaurante', function (req, res) {
   var url = 'mongodb://localhost:27017/oxifood';
 
- // Use connect method to connect to the server
- MongoClient.connect(url, function(err, db) {
-   var collection = db.collection('comedoria');
+  // Use connect method to connect to the server
+  MongoClient.connect(url, function(err, db) {
+    var collection = db.collection('comedoria');
 
     var food = {
       _id: uuid.v4(),
@@ -182,13 +182,13 @@ app.get('/eventos/:id', function (req, res) {
       food2: req.body.food2,
       food3: req.body.food3,
       food4: req.body.food4,
+      deliveryRate: parseFloat(req.body.deliveryRate)
     };
 
-          collection.insertOne(food);
-          res.redirect('/');
+    collection.insertOne(food);
+    res.redirect('/');
 
-        db.close();
-
+    db.close();
   });
  });
 
