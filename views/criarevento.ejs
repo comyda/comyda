@@ -13,12 +13,12 @@
     <h2>Criar evento</h2>
 
     <div
-      <form method="post" action="cadastrar-enquete.php">
-      <center><select name="restaurant" required="">
+      class="campo">
+      <select name="restaurant" required="">
       <option value selected>Selecione o restaurante</option>
       <option value="Pizzaria Atlântico">Pizzaria Atlântico</option>
       <option value="Famiglia Lucco">Famiglia Lucco</option>
-      </select></center>
+      </select>
     </div>
 
     <div
@@ -35,9 +35,16 @@
 
     <div
       class="campo">
-      <input type="datetime-local" name="time"
-      placeholder="Qual horário esse pedido termina?"
-      id="time" class="datetime-input" required="">
+      <input type="text" name="time"
+      placeholder="Qual o horário do evento?"
+      id="time" class="datetime-input" required="" onfocus="(this.type='datetime-local')">
+    </div>
+
+    <div
+      class="campo">
+      <input type="text" name="time"
+      placeholder="Qual hora o pedido encerra?"
+      id="time" class="datetime-input" required="" onfocus="(this.type='datetime-local')">
     </div>
 
     <div

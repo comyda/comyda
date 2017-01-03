@@ -37,7 +37,6 @@ input, textarea {
   font: 1.2em sans-serif;
 	width: 280px;
 	border: 1px solid #999
-	text-align: center;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
   text-align: center;
@@ -86,7 +85,9 @@ select {
 	box-sizing: border-box;
 	border: 1px solid #999;
   margin-top: 10px;
+  text-align: center;
 }
+
 .wrapper{
   min-height:100%;
   position: relative;
@@ -99,7 +100,7 @@ body{
   height: 100%;
 }
 
-#sair {
+#exit {
   position: relative;
   width: 20px;
   background-color: #FAEBD7;

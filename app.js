@@ -45,7 +45,7 @@ var url = 'mongodb://localhost:27017/oxifood';
  				if (minutes < 10) {
  					minutes = '0' + minutes;
  				}
- 				docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
+        docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
  				}
  			res.render('index', {eventos:docs});
  				   });
@@ -54,7 +54,7 @@ var url = 'mongodb://localhost:27017/oxifood';
  	});
  });
 
- app.get('/eventos/:id', function (req, res) {
+app.get('/eventos/:id', function (req, res) {
  	var url = 'mongodb://localhost:27017/oxifood';
 
  // Use connect method to connect to the server
