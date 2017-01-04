@@ -5,7 +5,6 @@ module.exports= {
   add: (body, callback) => {
     const url = 'mongodb://localhost:27017/oxifood';
 
-    // Use connect method to connect to the server
     MongoClient.connect(url, (err, db) => {
       const food = {
         _id: uuid.v4(),
@@ -23,6 +22,15 @@ module.exports= {
       });
 
       db.close();
+    });
+  },
+  findMany: (ids, callback) => {
+    const url = 'mongodb://localhost:27017/oxifood';
+
+    MongoClient.connect(url, (err, db) => {
+      db.collection('comedorias').find({'_id': {'$in': ids}}).toArray((err, comedorias) => {
+        callback(comedorias);
+      });
     });
   }
 }

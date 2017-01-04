@@ -1,15 +1,25 @@
 const MongoClient = require('mongodb').MongoClient;
+const comedoriaRepository = require('./comedoria');
 
 module.exports = {
   all: (callback) => {
     const url = 'mongodb://localhost:27017/oxifood';
 
-    // Use connect method to connect to the server
-   	MongoClient.connect(url, function(err, db) {
+   	MongoClient.connect(url, (err, db) => {
+     	db.collection('eventos').find({}).toArray((err, eventos) => {
+        const ids = eventos.map(evento => evento.restaurant);
 
-     	const collection = db.collection('eventos');
-     	collection.find({}).toArray(function(err, docs) {
-        callback(docs);
+        comedoriaRepository.findMany(ids, comedorias => {
+          eventos.forEach(evento => {
+            comedorias.forEach(comedoria => {
+              if (evento.restaurant === comedoria._id) {
+                evento.restaurant = comedoria.nameplace;
+              }
+            });
+          });
+
+          callback(eventos);
+        });
      	});
 
      	db.close();
