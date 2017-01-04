@@ -13,6 +13,39 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+  text-align: center;
+}
+
+a.button {
+
+  display: inline-block;
+  color: black;
+  background: #FF7F50;
+  padding: 5px 40px;
+  padding-top: 0px;
+  border-radius: 4px;
+  text-decoration: none;
+  outline: none;
+  font-family:monospace;
+  font-size: 16px;
+  text-align: center;
+}
+
+.button {
+  text-align: center;
+  color: black;
+  background: #FF7F50;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family:monospace;
+  font-size: 16px;
+  text-align: center;
+}
+
+a {
+  text-align: center;
+  color: #696969;
 }
 
 #rodape {
@@ -24,9 +57,4 @@ body {
   margin-top: 10px;
   text-align: center;
   font-size: 14px;
-}
-
-a {
-  text-align: center;
-  color: #696969;
 }
