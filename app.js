@@ -1,13 +1,14 @@
 
-var express = require('express');
-var bodyParser = require('body-parser');
-var calcular = require('./services/calcular');
-var comedoriaController = require('./controllers/comedoria');
-var app = express();
-var path = require('path');
-var MongoClient = require('mongodb').MongoClient;
-var uuid = require('uuid');
-var ObjectId = require('mongodb').ObjectID;
+const express = require('express');
+const bodyParser = require('body-parser');
+const calcular = require('./services/calcular');
+const comedoriaController = require('./controllers/comedoria');
+const homeController = require('./controllers/home');
+const app = express();
+const path = require('path');
+const MongoClient = require('mongodb').MongoClient;
+const uuid = require('uuid');
+const ObjectId = require('mongodb').ObjectID;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,81 +22,15 @@ app.use(function(req, res, next){
   next();
 });
 
-app.get('/', function (req, res) {
-var url = 'mongodb://localhost:27017/oxifood';
-
- // Use connect method to connect to the server
- 	MongoClient.connect(url, function(err, db) {
-
- 	var collection = db.collection('eventos');
-	collection.find({}).toArray(function(err, docs) {
-      for (var i = 0; i < docs.length; i++) {
- 				var day = docs[i].time.getDate();
- 				if (day < 10) {
- 					day = '0' + day;
- 				}
- 				var month = docs[i].time.getMonth()+1;
- 				if (month < 10) {
- 					month = '0' + month;
- 				}
- 				var hours = docs[i].time.getHours() + 3;
- 				if (hours < 10) {
- 					hours = '0' + hours;
- 				}
- 				var minutes = docs[i].time.getMinutes();
- 				if (minutes < 10) {
- 					minutes = '0' + minutes;
- 				}
- 				docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
- 				}
- 			res.render('index', {eventos:docs});
- 				   });
-
- 		db.close();
- 	});
-});
-
-app.get('/', function (req, res) {
-var url = 'mongodb://localhost:27017/oxifood';
-
- // Use connect method to connect to the server
- 	MongoClient.connect(url, function(err, db) {
-
- 	var collection = db.collection('eventos');
- 		collection.find({}).toArray(function(err, docs) {
-      for (var i = 0; i < docs.length; i++) {
- 				var day = docs[i].timeFinished.getDate();
- 				if (day < 10) {
- 					day = '0' + day;
- 				}
- 				var month = docs[i].timeFinished.getMonth()+1;
- 				if (month < 10) {
- 					month = '0' + month;
- 				}
- 				var hours = docs[i].timeFinished.getHours() + 3;
- 				if (hours < 10) {
- 					hours = '0' + hours;
- 				}
- 				var minutes = docs[i].timeFinished.getMinutes();
- 				if (minutes < 10) {
- 					minutes = '0' + minutes;
- 				}
-        docs[i].timeAsString = day + '/' + month + ' ' + 'às' + ' ' + hours+ ':'+ minutes;
- 				}
- 			res.render('index', {eventos:docs});
- 				   });
-
- 		db.close();
- 	});
-});
+app.get('/', homeController.index);
 
 app.get('/eventos/:id', function (req, res) {
- 	var url = 'mongodb://localhost:27017/oxifood';
+ 	const url = 'mongodb://localhost:27017/oxifood';
 
  // Use connect method to connect to the server
  	MongoClient.connect(url, function(err, db) {
 
- 	var collection = db.collection('participar');
+ 	const collection = db.collection('participar');
  		collection.find({eventid:req.params.id}).toArray(function(err, docs) {
 
  							res.render('participar', {participar:docs, eventid:req.params.id});
@@ -107,16 +42,16 @@ app.get('/eventos/:id', function (req, res) {
 
 
  app.get('/calcular/event/:id', function(req, res) {
-   var url = 'mongodb://localhost:27017/oxifood';
+   const url = 'mongodb://localhost:27017/oxifood';
 
   // Use connect method to connect to the server
   	MongoClient.connect(url, function(err, db) {
 
-  	   var collection = db.collection('participar');
+  	   const collection = db.collection('participar');
        collection.aggregate([{$match: {'eventid': req.params.id} }, {$group : {_id : "$eventid", subscribers : {$sum : 1 }}}]).toArray(function(err, docs) {
-        var pizzas = calcular.getPizzas(docs[0].subscribers);
-        var guarana = calcular.getGuarana(docs[0].subscribers);
-        var valorTotal = pizzas.total + guarana.total;
+        const pizzas = calcular.getPizzas(docs[0].subscribers);
+        const guarana = calcular.getGuarana(docs[0].subscribers);
+        const valorTotal = pizzas.total + guarana.total;
           res.render('tabeladecalculo', {pizzas: pizzas, guarana: guarana, valor: valorTotal});
   	   });
 
@@ -125,10 +60,10 @@ app.get('/eventos/:id', function (req, res) {
   });
 
   app.delete('/event/:id', function(req,res) {
-  var url = 'mongodb://localhost:27017/oxifood';
+  const url = 'mongodb://localhost:27017/oxifood';
     MongoClient.connect(url, function(err, db) {
 
-  			var collection = db.collection('eventos');
+  			const collection = db.collection('eventos');
       collection.remove({"_id": req.params.id});
         res.redirect('/');
 
@@ -137,10 +72,10 @@ app.get('/eventos/:id', function (req, res) {
   });
 
   app.delete('/participar/:id', function(req,res) {
-  var url = 'mongodb://localhost:27017/oxifood';
+  const url = 'mongodb://localhost:27017/oxifood';
     MongoClient.connect(url, function(err, db) {
 
-  			var collection = db.collection('participar');
+  			const collection = db.collection('participar');
       collection.remove({"_id": req.params.id});
         res.redirect('/');
 
@@ -149,12 +84,12 @@ app.get('/eventos/:id', function (req, res) {
   });
 
  app.get('/evento', function(req, res) {
- var url = 'mongodb://localhost:27017/oxifood';
+ const url = 'mongodb://localhost:27017/oxifood';
 
   // Use connect method to connect to the server
   	MongoClient.connect(url, function(err, db) {
 
-  	   var collection = db.collection('comedoria');
+  	   const collection = db.collection('comedoria');
        collection.find({}).toArray(function(err, docs){
 
          res.render('criarevento', {comedorias: docs});
@@ -165,13 +100,13 @@ app.get('/eventos/:id', function (req, res) {
  });
 
  app.post('/eventos', function (req, res) {
- 	var url = 'mongodb://localhost:27017/oxifood';
+ 	const url = 'mongodb://localhost:27017/oxifood';
 
  // Use connect method to connect to the server
  MongoClient.connect(url, function(err, db) {
-   var collection = db.collection('eventos');
+   const collection = db.collection('eventos');
 
- 		var event = {
+ 		const event = {
  			_id: uuid.v4(),
       restaurant: req.body.restaurant,
       name: req.body.name,
@@ -189,14 +124,14 @@ app.get('/eventos/:id', function (req, res) {
  });
 
  app.post('/participar', function (req, res) {
- 	var url = 'mongodb://localhost:27017/oxifood';
+ 	const url = 'mongodb://localhost:27017/oxifood';
 
  		// Use connect method to connect to the server
  		MongoClient.connect(url, function(err, db) {
 
- 			var collection = db.collection('participar');
+ 			const collection = db.collection('participar');
 
- 				var dados = {
+ 				const dados = {
 	 		    _id: uuid.v4(),
 	 				eventid: req.body.eventid,
 	 				firstname: req.body.firstname,
