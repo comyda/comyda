@@ -1,6 +1,6 @@
 module.exports = {
-  format: docs => {
-    docs.forEach(doc => {
+  format: eventos => {
+    eventos.forEach(evento => {
       function addAditionalZero(value) {
         if (value < 10) {
           return `0${value}`;
@@ -9,14 +9,24 @@ module.exports = {
         return value;
       }
 
-      let day = addAditionalZero(doc.time.getDate());
-      let month = addAditionalZero(doc.time.getMonth() + 1);
-      let hours = addAditionalZero(doc.time.getHours() + 3);
-      let minutes = addAditionalZero(doc.time.getMinutes());
+      function generateTimeAsString(time) {
+        const day = addAditionalZero(time.getDate());
+        const month = addAditionalZero(time.getMonth() + 1);
+        const hours = addAditionalZero(time.getHours());
+        const minutes = addAditionalZero(time.getMinutes());
 
-      doc.timeAsString = `${day}/${month} às ${hours}:${minutes}`;
+        return `${day}/${month} às ${hours}:${minutes}`
+      }
+
+      const eventTime = evento.time;
+      eventTime.setHours(eventTime.getHours() + 3);
+      evento.timeAsString = generateTimeAsString(eventTime);
+
+      const finishedTime = eventTime;
+      finishedTime.setHours(eventTime.getHours() - 2);
+      evento.finishedTime = generateTimeAsString(finishedTime);
     });
 
-    return docs;
+    return eventos;
   }
 };

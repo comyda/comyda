@@ -33,6 +33,9 @@
       <th>
         Data/hora
       </th>
+      <th>
+         Encerramento
+      </th>
     </tr>
   </thead>
 
@@ -50,6 +53,9 @@
        </td>
        <td>
          <%= eventos[i].timeAsString%>
+       </td>
+       <td>
+         <%= eventos[i].finishedTime %>
        </td>
      </tr>
   <% } %>

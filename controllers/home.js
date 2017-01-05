@@ -3,6 +3,6 @@ const eventoService = require('../services/evento');
 
 module.exports = {
   index: (req, res) => {
-    eventoRepository.all(docs => res.render('index', {eventos: eventoService.format(docs)}));
+    eventoRepository.all(eventos => res.render('index', {eventos: eventoService.format(eventos)}));
   }
 };
