@@ -4,6 +4,31 @@
     <link rel="stylesheet" href="addrestaurante.css">
      <meta charset="utf-8">
      <title>Adicione seu restaurante</title>
+     <script type="text/javascript">
+/* Máscaras ER */
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function mtel(v){
+    v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+    return v;
+}
+function id( el ){
+	return document.getElementById( el );
+}
+window.onload = function(){
+	id('phone').onkeyup = function(){
+		mascara( this, mtel );
+	}
+}
+</script>
   </head>
   <body>
 
@@ -21,7 +46,7 @@
 
     <div
       class="campo">
-      <input type="text" name="phone" pattern="\(\d{2}\)\s\d{4}-\d{4}"
+      <input type="text" name="phone" maxlength="15"
       placeholder="Qual o telefone? Ex:(00) 0000-0000" id="phone" required="">
     </div>
 
