@@ -89,7 +89,7 @@ app.get('/eventos/:id', function (req, res) {
   // Use connect method to connect to the server
   	MongoClient.connect(url, function(err, db) {
 
-  	   const collection = db.collection('comedoria');
+  	   const collection = db.collection('comedorias');
        collection.find({}).toArray(function(err, docs){
 
          res.render('criarevento', {comedorias: docs});

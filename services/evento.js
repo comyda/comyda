@@ -18,6 +18,12 @@ module.exports = {
         return `${day}/${month} às ${hours}:${minutes}`
       }
 
+      function getStatus(time) {
+        const value = time.getTime() - Date.now();
+        if (value < 0) return "ENCERRADO";
+        return "";
+      }
+
       const eventTime = evento.time;
       eventTime.setHours(eventTime.getHours() + 3);
       evento.timeAsString = generateTimeAsString(eventTime);
@@ -25,6 +31,8 @@ module.exports = {
       const finishedTime = eventTime;
       finishedTime.setHours(eventTime.getHours() - 2);
       evento.finishedTime = generateTimeAsString(finishedTime);
+
+      evento.status = getStatus(evento.time);
     });
 
     return eventos;
