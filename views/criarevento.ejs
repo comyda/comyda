@@ -4,6 +4,19 @@
     <link rel="stylesheet" href="criarevento.css">
      <meta charset="utf-8">
      <title>Crie seu evento</title>
+     <script>
+function CompararData(){
+    campodata = document.input.time.value
+    datahoje = document.input.hoje.value
+    var result = true;
+      if (campodata >= datahoje){
+        return result;
+      }
+      else {
+        alert("A data informada é Retroativa...\nInforme uma data Valida")
+      }
+  };
+    </script>
   </head>
   <body>
 
@@ -40,7 +53,14 @@
       class="campo">
       <input type="text" name="time"
       placeholder="Qual o horário do evento?"
-      id="time" class="datetime-input" required="" onfocus="(this.type='datetime-local')">
+      id="time" class="datetime-input" required="" onfocus="(this.type='datetime-local')"
+      onBlur="CompararData();">
+    </div>
+
+    <div
+      class="campo">
+      <input type="hidden" name="hoje" value="<%=Date%>" onfocus="(this.type='datetime-local')"
+      id="hoje">
     </div>
 
     <div
