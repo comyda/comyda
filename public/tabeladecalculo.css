@@ -17,27 +17,14 @@ body {
 }
 
 a.button {
-
   display: inline-block;
   color: black;
-  background: #FF7F50;
+  background: #FAEBD7;
   padding: 5px 40px;
   padding-top: 0px;
   border-radius: 4px;
   text-decoration: none;
   outline: none;
-  font-family:monospace;
-  font-size: 16px;
-  text-align: center;
-}
-
-.button {
-  text-align: center;
-  color: black;
-  background: #FF7F50;
-  padding: 6px 12px;
-  border-radius: 4px;
-  text-decoration: none;
   font-family:monospace;
   font-size: 16px;
   text-align: center;
