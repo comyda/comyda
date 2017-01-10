@@ -7,9 +7,9 @@ module.exports = {
 
    	MongoClient.connect(url, (err, db) => {
      	db.collection('eventos').find({}).toArray((err, eventos) => {
-        const ids = eventos.map(evento => evento.restaurant);
+        const restaurantIds = eventos.map(evento => evento.restaurant);
 
-        comedoriaRepository.findMany(ids, comedorias => {
+        comedoriaRepository.findMany(restaurantIds, comedorias => {
           eventos.forEach(evento => {
             comedorias.forEach(comedoria => {
               if (evento.restaurant === comedoria._id) {
