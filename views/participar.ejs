@@ -28,7 +28,9 @@
     <div>
     <select name="flavor" id="choiceoffood" required="">
     <option value selected>O que você vai comer?</option>
-    <option value="Calabresa">Calabresa</option>
+    <% for(var i=0; i < foods.length; i++) {%>
+      <option value="<%= foods[i].name %>"><%= foods[i].name %></option>
+    <% } %>
     </select>
   </div>
 

@@ -27,18 +27,22 @@ app.get('/', homeController.index);
 app.get('/eventos/:id', function (req, res) {
  	const url = 'mongodb://localhost:27017/oxifood';
 
- // Use connect method to connect to the server
+  // Use connect method to connect to the server
  	MongoClient.connect(url, function(err, db) {
-
- 	const collection = db.collection('participar');
- 		collection.find({eventid:req.params.id}).toArray(function(err, docs) {
-
- 							res.render('participar', {participar:docs, eventid:req.params.id});
- 				   });
-
- 					 db.close();
- 	});
- });
+    db.collection('eventos').find({_id: req.params.id}).toArray(function(err, eventos) {
+      db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray(function(err, comedorias) {
+        db.collection('participar').find({eventid: req.params.id}).toArray(function(err, docs) {
+      	   res.render('participar', {
+             participar: docs,
+             eventid: req.params.id,
+             foods: comedorias[0].foods
+           });
+           db.close();
+        });
+      });
+    });
+  });
+});
 
 
  app.get('/calcular/event/:id', function(req, res) {
