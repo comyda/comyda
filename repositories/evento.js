@@ -2,7 +2,17 @@ const MongoClient = require('mongodb').MongoClient;
 const comedoriaRepository = require('./comedoria');
 
 module.exports = {
-  all: (callback) => {
+  findOne: (id, callback) => {
+    const url = 'mongodb://localhost:27017/oxifood';
+
+    MongoClient.connect(url, (err, db) => {
+      db.collection('eventos').find({_id: id}).toArray((err, eventos) => {
+        callback(eventos[0]);
+        db.close();
+      });
+    });
+  },
+  allFormated: (callback) => {
     const url = 'mongodb://localhost:27017/oxifood';
 
    	MongoClient.connect(url, (err, db) => {
@@ -20,9 +30,10 @@ module.exports = {
 
           callback(eventos);
         });
+
+        db.close();
      	});
 
-     	db.close();
    	});
   }
 };

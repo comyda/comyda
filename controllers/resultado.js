@@ -1,5 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const calcular = require('../services/calcular');
+const eventoRepository = require('../repositories/evento');
+const comedoriaRepository = require('../repositories/comedoria');
 
 module.exports = {
   index: (req, res) => {
@@ -8,8 +10,8 @@ module.exports = {
     const result = {foods: [], total: 0};
 
   	MongoClient.connect(url, function(err, db) {
-      db.collection('eventos').find({_id: req.params.id}).toArray((err, eventos) => {
-        db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray((err, comedorias) => {
+      eventoRepository.findOne(req.params.id, evento => {
+        comedoriaRepository.findOne(evento.restaurant, comedoria => {
           db.collection('participar').find({eventid: req.params.id}).toArray((err, participants) => {
             participants.forEach(participant => {
               const foundFood = result.foods.find(food => food.name === participant.flavor);
@@ -19,7 +21,7 @@ module.exports = {
                 result.foods.push({name: participant.flavor, quantity: 1});
               }
 
-              const foodFromComedoria = comedorias[0].foods.find(food => food.name === participant.flavor);
+              const foodFromComedoria = comedoria.foods.find(food => food.name === participant.flavor);
               result.total += foodFromComedoria.price;
             });
 

@@ -2,6 +2,16 @@ const MongoClient = require('mongodb').MongoClient;
 const uuid = require('uuid');
 
 module.exports= {
+  findOne: (id, callback) => {
+    const url = 'mongodb://localhost:27017/oxifood';
+
+    MongoClient.connect(url, (err, db) => {
+      db.collection('comedorias').find({_id: id}).toArray((err, comedorias) => {
+        callback(comedorias[0]);
+        db.close();
+      });
+    });
+  },
   add: (body, callback) => {
     const url = 'mongodb://localhost:27017/oxifood';
 
