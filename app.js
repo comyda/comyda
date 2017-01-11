@@ -45,23 +45,39 @@ app.get('/eventos/:id', function (req, res) {
 });
 
 
- app.get('/calcular/event/:id', function(req, res) {
-   const url = 'mongodb://localhost:27017/oxifood';
+app.get('/calcular/event/:id', function(req, res) {
+  const url = 'mongodb://localhost:27017/oxifood';
 
-  // Use connect method to connect to the server
-  	MongoClient.connect(url, function(err, db) {
+  const result = {foods: [], total: 0};
 
-  	   const collection = db.collection('participar');
-       collection.aggregate([{$match: {'eventid': req.params.id} }, {$group : {_id : "$eventid", subscribers : {$sum : 1 }}}]).toArray(function(err, docs) {
-        const pizzas = calcular.getPizzas(docs[0].subscribers);
-        const guarana = calcular.getGuarana(docs[0].subscribers);
-        const valorTotal = pizzas.total + guarana.total;
-          res.render('tabeladecalculo', {pizzas: pizzas, guarana: guarana, valor: valorTotal});
-  	   });
+	MongoClient.connect(url, function(err, db) {
+    db.collection('eventos').find({_id: req.params.id}).toArray((err, eventos) => {
+      db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray((err, comedorias) => {
+        db.collection('participar').find({eventid: req.params.id}).toArray((err, participants) => {
+          participants.forEach(participant => {
+            const foundFood = result.foods.find(food => food.name === participant.flavor);
+            if (foundFood) {
+              foundFood.quantity++;
+            } else {
+              result.foods.push({name: participant.flavor, quantity: 1});
+            }
 
-  		 db.close();
-  	});
-  });
+            const foodFromComedoria = comedorias[0].foods.find(food => food.name === participant.flavor);
+            result.total += foodFromComedoria.price;
+          });
+
+          const guaranas = calcular.getGuarana(participants.length);
+          result.total += guaranas.total;
+          result.sodaTotal = guaranas.total;
+          result.sodaQuantity = guaranas.numGuarana;
+
+          db.close();
+          res.render('tabeladecalculo', {result: result});
+        });
+      });
+    });
+ });
+});
 
   app.delete('/event/:id', function(req,res) {
   const url = 'mongodb://localhost:27017/oxifood';
