@@ -21,11 +21,6 @@
     </div>
 
     <div>
-      <input type="text" name="restriction"
-      placeholder="Restrição alimentar? Se sim, qual?" required="">
-    </div>
-
-    <div>
     <select name="flavor" id="choiceoffood" required="">
     <option value selected>O que você vai comer?</option>
     <% for(var i=0; i < foods.length; i++) {%>
@@ -48,9 +43,6 @@
             Nome
           </th>
           <th>
-            Restrição
-          </th>
-          <th>
            O que vai comer
            <th>
             Sair do evento
@@ -63,9 +55,6 @@
       <tr>
         <td>
           <%= participar[i].firstname%>
-        </td>
-        <td>
-          <%= participar[i].restriction%>
         </td>
         <td>
           <%= participar[i].flavor%>

@@ -139,7 +139,6 @@ app.get('/eventos/:id', function (req, res) {
 	 		    _id: uuid.v4(),
 	 				eventid: req.body.eventid,
 	 				firstname: req.body.firstname,
-	 				restriction: req.body.restriction,
           flavor: req.body.flavor
         };
 
