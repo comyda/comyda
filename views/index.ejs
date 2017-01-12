@@ -51,7 +51,7 @@
          <%= eventos[i].ownername%>
        </td>
        <td>
-         <a href="/eventos/<%= eventos[i]._id%>"><%= eventos[i].name%></a>
+         <a href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a>
        </td>
        <td>
          <%= eventos[i].timeAsString%>

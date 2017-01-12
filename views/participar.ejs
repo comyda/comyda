@@ -11,28 +11,34 @@
     <h1>Vai participar do evento?</h1>
 
     <!--FORMULARIO PARA SE INSCREVER NO EVENTO-->
+    <% if(status != "ENCERRADO") {%>
     <form
-      name="input" action="/participar"  method="post">
-      <input type="hidden" name="eventid" value="<%=eventid%>">
+    name="input" action="/participar"  method="post" >
+    <input type="hidden" name="eventid" value="<%=eventid%>">
 
     <div>
-      <input type="text" name="firstname"
-      placeholder="Nome" required="">
+    <input type="text" name="firstname"
+    placeholder="Nome" required="">
+    </div>
+
+    <div>
+    <input type="text" name="restriction"
+    placeholder="Restrição alimentar? Se sim, qual?" required="">
     </div>
 
     <div>
     <select name="flavor" id="choiceoffood" required="">
     <option value selected>O que você vai comer?</option>
-    <% for(var i=0; i < foods.length; i++) {%>
-      <option value="<%= foods[i].name %>"><%= foods[i].name %></option>
-    <% } %>
+    <option value="Calabresa">Calabresa</option>
     </select>
-  </div>
+    </div>
 
     <div>
-      <input type="submit" value="Enviar">
+    <input type="submit" value="Enviar">
     </div>
      </form>
+         <% } %>
+
     <!--FIM DO FORMULARIO-->
 
     <!--TABELA QUE LISTA TODOS OS INSCRITOS DO EVENTO-->
@@ -41,6 +47,9 @@
         <tr>
           <th>
             Nome
+          </th>
+          <th>
+            Restrição
           </th>
           <th>
            O que vai comer
@@ -55,6 +64,9 @@
       <tr>
         <td>
           <%= participar[i].firstname%>
+        </td>
+        <td>
+          <%= participar[i].restriction%>
         </td>
         <td>
           <%= participar[i].flavor%>
@@ -93,7 +105,7 @@
  </div>
 <!--BOTAO PARA VOLTAR PARA A HOME-->
 <div class="button-container">
-  <a class="button" href="/">Ir para a página inicial</a>
+  <a class="button" href="/">Página inicial</a>
 </div>
  <!--FIM-->
 </div>

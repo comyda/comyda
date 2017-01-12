@@ -1,9 +1,9 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const calcular = require('./services/calcular');
 const comedoriaController = require('./controllers/comedoria');
 const homeController = require('./controllers/home');
-const resultadoController = require('./controllers/resultado');
 const app = express();
 const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
@@ -24,28 +24,43 @@ app.use(function(req, res, next){
 
 app.get('/', homeController.index);
 
-app.get('/eventos/:id', function (req, res) {
+app.get('/eventos/:id/:status*?', function (req, res) {
  	const url = 'mongodb://localhost:27017/oxifood';
 
-  // Use connect method to connect to the server
+ // Use connect method to connect to the server
  	MongoClient.connect(url, function(err, db) {
-    db.collection('eventos').find({_id: req.params.id}).toArray(function(err, eventos) {
-      db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray(function(err, comedorias) {
-        db.collection('participar').find({eventid: req.params.id}).toArray(function(err, docs) {
-      	   res.render('participar', {
-             participar: docs,
-             eventid: req.params.id,
-             foods: comedorias[0].foods
-           });
-           db.close();
-        });
-      });
-    });
+
+
+ 	var collection = db.collection('participar');
+
+
+ 		collection.find({eventid:req.params.id}).toArray(function(err, docs) {
+console.log(req.params.status);
+ 							res.render('participar', {participar:docs, eventid:req.params.id, status: req.params.status});
+ 				   });
+
+ 					 db.close();
+ 	});
   });
-});
 
 
-app.get('/calcular/event/:id', resultadoController.index);
+ app.get('/calcular/event/:id', function(req, res) {
+   const url = 'mongodb://localhost:27017/oxifood';
+
+  // Use connect method to connect to the server
+  	MongoClient.connect(url, function(err, db) {
+
+  	   const collection = db.collection('participar');
+       collection.aggregate([{$match: {'eventid': req.params.id} }, {$group : {_id : "$eventid", subscribers : {$sum : 1 }}}]).toArray(function(err, docs) {
+        const pizzas = calcular.getPizzas(docs[0].subscribers);
+        const guarana = calcular.getGuarana(docs[0].subscribers);
+        const valorTotal = pizzas.total + guarana.total;
+          res.render('tabeladecalculo', {pizzas: pizzas, guarana: guarana, valor: valorTotal});
+  	   });
+
+  		 db.close();
+  	});
+  });
 
   app.delete('/event/:id', function(req,res) {
   const url = 'mongodb://localhost:27017/oxifood';
@@ -123,6 +138,7 @@ app.get('/calcular/event/:id', resultadoController.index);
 	 		    _id: uuid.v4(),
 	 				eventid: req.body.eventid,
 	 				firstname: req.body.firstname,
+	 				restriction: req.body.restriction,
           flavor: req.body.flavor
         };
 
