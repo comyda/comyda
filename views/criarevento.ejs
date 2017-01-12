@@ -4,21 +4,7 @@
     <link rel="stylesheet" href="criarevento.css">
      <meta charset="utf-8">
      <title>Crie seu evento</title>
-     <script>
-function CompararData(event){
-    campodata = new Date(document.input.time.value);
-    datahoje = new Date();
-    var result = true;
-      if (campodata >= datahoje){
-        return result;
-      }
-      else {
-        event.preventDefault();
-        alert("A data informada é Retroativa...\nInforme uma data Valida")
-        return false;
-      }
-  };
-    </script>
+
   </head>
   <body>
 
@@ -60,7 +46,7 @@ function CompararData(event){
 
     <div
       class="botao">
-      <input type="submit" value="Enviar" onclick="CompararData(event);">
+      <input type="submit" value="Enviar">
     </div>
 
     <div
