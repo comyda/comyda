@@ -1,7 +1,6 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const calcular = require('./services/calcular');
 const comedoriaController = require('./controllers/comedoria');
 const homeController = require('./controllers/home');
 const resultadoController = require('./controllers/resultado');
@@ -46,7 +45,7 @@ app.get('/eventos/:id', function (req, res) {
 });
 
 
-app.get('/calcular/event/:id', resultadoController.index);
+app.get('/evento/:id/resultado', resultadoController.index);
 
   app.delete('/event/:id', function(req,res) {
   const url = 'mongodb://localhost:27017/oxifood';
