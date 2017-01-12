@@ -1,30 +1,44 @@
-function getGuarana(subscribers) {
-  var numGuarana = Math.ceil(subscribers/8);
-  var totalGuarana = numGuarana * 8.00;
-  return {numGuarana, total: totalGuarana}
+function getSodaQuantity(participants) {
+  return Math.ceil(participants.length/8);
+}
+
+function getSodaTotal(participants) {
+  return getSodaQuantity(participants) * 8.00;
+}
+
+function generateFoods(participants) {
+  const foods = [];
+  participants.forEach(participant => {
+    const foundFood = foods.find(food => food.name === participant.flavor);
+    if (foundFood) {
+      foundFood.quantity++;
+    } else {
+      foods.push({name: participant.flavor, quantity: 1});
+    }
+  });
+
+  return foods;
+}
+
+function calculateTotal(participants, comedoria) {
+  let total = 0;
+  participants.forEach(participant => {
+    const foodFromComedoria = comedoria.foods.find(food => food.name === participant.flavor);
+    total += foodFromComedoria.price;
+  });
+
+  total += getSodaTotal(participants);
+
+  return total;
 }
 
 module.exports = {
   calcular: (participants, comedoria) => {
-    const result = {foods: [], total: 0};
-
-    participants.forEach(participant => {
-      const foundFood = result.foods.find(food => food.name === participant.flavor);
-      if (foundFood) {
-        foundFood.quantity++;
-      } else {
-        result.foods.push({name: participant.flavor, quantity: 1});
-      }
-
-      const foodFromComedoria = comedoria.foods.find(food => food.name === participant.flavor);
-      result.total += foodFromComedoria.price;
-    });
-
-    const guaranas = getGuarana(participants.length);
-    result.total += guaranas.total;
-    result.sodaTotal = guaranas.total;
-    result.sodaQuantity = guaranas.numGuarana;
-
-    return result;
+    return {
+      foods: generateFoods(participants),
+      total: calculateTotal(participants, comedoria),
+      sodaTotal: getSodaTotal(participants),
+      sodaQuantity: getSodaQuantity(participants)
+    };
   }
 };
