@@ -5,15 +5,17 @@
      <meta charset="utf-8">
      <title>Crie seu evento</title>
      <script>
-function CompararData(){
-    campodata = document.input.time.value
-    datahoje = document.input.hoje.value
+function CompararData(event){
+    campodata = new Date(document.input.time.value);
+    datahoje = new Date();
     var result = true;
       if (campodata >= datahoje){
         return result;
       }
       else {
+        event.preventDefault();
         alert("A data informada é Retroativa...\nInforme uma data Valida")
+        return false;
       }
   };
     </script>
@@ -54,18 +56,11 @@ function CompararData(){
       <input type="text" name="time"
       placeholder="Qual o horário do evento?"
       id="time" class="datetime-input" required="" onfocus="(this.type='datetime-local')"
-      onBlur="CompararData();">
-    </div>
-
-    <div
-      class="campo">
-      <input type="hidden" name="hoje" value="<%=Date%>" onfocus="(this.type='datetime-local')"
-      id="hoje">
     </div>
 
     <div
       class="botao">
-      <input type="submit" value="Enviar">
+      <input type="submit" value="Enviar" onclick="CompararData(event);">
     </div>
 
     <div
