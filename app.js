@@ -1,6 +1,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const calcular = require('./services/calcular');
 const comedoriaController = require('./controllers/comedoria');
 const homeController = require('./controllers/home');
 const resultadoController = require('./controllers/resultado');
@@ -24,27 +25,28 @@ app.use(function(req, res, next){
 
 app.get('/', homeController.index);
 
-app.get('/eventos/:id/:status*?', function (req, res) {
+app.get('/eventos/:id', function (req, res) {
  	const url = 'mongodb://localhost:27017/oxifood';
 
- // Use connect method to connect to the server
+  // Use connect method to connect to the server
  	MongoClient.connect(url, function(err, db) {
-
-
- 	var collection = db.collection('participar');
-
-
- 		collection.find({eventid:req.params.id}).toArray(function(err, docs) {
-console.log(req.params.status);
- 							res.render('participar', {participar:docs, eventid:req.params.id, status: req.params.status});
- 				   });
-
- 					 db.close();
- 	});
+    db.collection('eventos').find({_id: req.params.id}).toArray(function(err, eventos) {
+      db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray(function(err, comedorias) {
+        db.collection('participar').find({eventid: req.params.id}).toArray(function(err, docs) {
+      	   res.render('participar', {
+             participar: docs,
+             eventid: req.params.id,
+             foods: comedorias[0].foods
+           });
+           db.close();
+        });
+      });
+    });
   });
+});
 
 
- app.get('/evento/:id/resultado', resultadoController.index);
+app.get('/calcular/event/:id', resultadoController.index);
 
   app.delete('/event/:id', function(req,res) {
   const url = 'mongodb://localhost:27017/oxifood';
@@ -122,7 +124,6 @@ console.log(req.params.status);
 	 		    _id: uuid.v4(),
 	 				eventid: req.body.eventid,
 	 				firstname: req.body.firstname,
-	 				restriction: req.body.restriction,
           flavor: req.body.flavor
         };
 
