@@ -99,8 +99,7 @@ app.get('/evento/:id/resultado', resultadoController.index);
       restaurant: req.body.restaurant,
       name: req.body.name,
  			ownername: req.body.ownername,
- 			time: new Date(req.body.time),
-      timeFinished: new Date(req.body.timeFinished)
+ 			time: new Date(req.body.time)
  		};
 
  					collection.insertOne(event);
