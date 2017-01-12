@@ -1,9 +1,9 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const calcular = require('./services/calcular');
 const comedoriaController = require('./controllers/comedoria');
 const homeController = require('./controllers/home');
+const resultadoController = require('./controllers/resultado');
 const app = express();
 const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
@@ -44,23 +44,7 @@ console.log(req.params.status);
   });
 
 
- app.get('/calcular/event/:id', function(req, res) {
-   const url = 'mongodb://localhost:27017/oxifood';
-
-  // Use connect method to connect to the server
-  	MongoClient.connect(url, function(err, db) {
-
-  	   const collection = db.collection('participar');
-       collection.aggregate([{$match: {'eventid': req.params.id} }, {$group : {_id : "$eventid", subscribers : {$sum : 1 }}}]).toArray(function(err, docs) {
-        const pizzas = calcular.getPizzas(docs[0].subscribers);
-        const guarana = calcular.getGuarana(docs[0].subscribers);
-        const valorTotal = pizzas.total + guarana.total;
-          res.render('tabeladecalculo', {pizzas: pizzas, guarana: guarana, valor: valorTotal});
-  	   });
-
-  		 db.close();
-  	});
-  });
+ app.get('/evento/:id/resultado', resultadoController.index);
 
   app.delete('/event/:id', function(req,res) {
   const url = 'mongodb://localhost:27017/oxifood';
