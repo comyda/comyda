@@ -132,10 +132,6 @@ app.get('/evento/:id/resultado', resultadoController.index);
  		});
  });
 
- app.get('/restaurante', function(req, res) {
-  res.render('addrestaurante');
- });
-
 app.post('/comedorias', comedoriaController.create);
 
 app.listen(3000, function () {
