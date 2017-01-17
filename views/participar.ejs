@@ -11,6 +11,7 @@
     <h1>Vai participar do evento?</h1>
 
     <!--FORMULARIO PARA SE INSCREVER NO EVENTO-->
+    <% if(status != "ENCERRADO") {%>
     <form
       name="input" action="/participar"  method="post">
       <input type="hidden" name="eventid" value="<%=eventid%>">
@@ -33,6 +34,7 @@
       <input type="submit" value="Enviar">
     </div>
      </form>
+     <% } %>
     <!--FIM DO FORMULARIO-->
 
     <!--TABELA QUE LISTA TODOS OS INSCRITOS DO EVENTO-->
