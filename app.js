@@ -33,7 +33,6 @@ app.get('/eventos/:id/:status*?', function (req, res) {
     db.collection('eventos').find({_id: req.params.id}).toArray(function(err, eventos) {
       db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray(function(err, comedorias) {
         db.collection('participar').find({eventid: req.params.id}).toArray(function(err, docs) {
-          console.log(comedorias[0].foods);
            res.render('participar', {
              participar: docs,
              eventid: req.params.id,
