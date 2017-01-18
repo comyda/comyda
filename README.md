@@ -24,3 +24,8 @@ A aplicação requer alguns dados para o correto funcionamento. Para isso você 
 
 - Execute `npm start`
 - Acesse no seu browser `http://localhost:3000/` para ver a aplicação funcionando
+
+### Executando os testes
+
+- Execute `npm run webdriver-update` para atualizar o webdriver
+- Execute `npm test`

@@ -2,7 +2,9 @@
   "name": "comyda",
   "version": "1.0.0",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "./node_modules/protractor/bin/protractor conf-e2e.js",
+    "webdriver-update": "node_modules/protractor/bin/webdriver-manager update"
   },
   "private": true,
   "dependencies": {
@@ -11,5 +13,8 @@
     "express": "^4.14.0",
     "mongodb": "^2.2.10",
     "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "protractor": "^5.0.0"
   }
 }
