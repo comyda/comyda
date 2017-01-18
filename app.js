@@ -33,13 +33,20 @@ app.get('/eventos/:id/:status*?', function (req, res) {
     db.collection('eventos').find({_id: req.params.id}).toArray(function(err, eventos) {
       db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray(function(err, comedorias) {
         db.collection('participar').find({eventid: req.params.id}).toArray(function(err, docs) {
-           res.render('participar', {
-             participar: docs,
-             eventid: req.params.id,
-             foods: comedorias[0].foods,
-             status: req.params.status
-           });
-           db.close();
+          const sortedFoods = comedorias[0].foods.sort(function(food1, food2) {
+            const nameFood1 = food1.name.toUpperCase();
+            const nameFood2 = food2.name.toUpperCase();
+            if (nameFood1 < nameFood2) return -1;
+            if (nameFood1 > nameFood2) return 1;
+            return 0;
+          });
+          res.render('participar', {
+            participar: docs,
+            eventid: req.params.id,
+            foods: sortedFoods,
+            status: req.params.status
+          });
+          db.close();
         });
       });
     });
