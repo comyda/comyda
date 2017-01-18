@@ -99,3 +99,12 @@ html,
 body{
   height: 100%;
 }
+
+
+header {
+  background: #FF7F50;
+  color: white;
+  text-align: center;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
