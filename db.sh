@@ -7,6 +7,7 @@ case $1 in
   ;;
   -e | --export)
     mongoexport --db oxifood --collection comedorias --out comedorias.json
+  ;;
   * )
     exit 1
 esac
