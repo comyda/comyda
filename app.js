@@ -111,27 +111,26 @@ app.get('/evento/:id/resultado', resultadoController.index);
  	});
  });
 
- app.post('/participar', function (req, res) {
- 	const url = 'mongodb://localhost:27017/oxifood';
+app.post('/participar', function (req, res) {
+  const url = 'mongodb://localhost:27017/oxifood';
 
- 		// Use connect method to connect to the server
- 		MongoClient.connect(url, function(err, db) {
+ 	// Use connect method to connect to the server
+ 	MongoClient.connect(url, function(err, db) {
+ 	  const collection = db.collection('participar');
 
- 			const collection = db.collection('participar');
+		const dados = {
+	    _id: uuid.v4(),
+			eventid: req.body.eventid,
+			firstname: req.body.firstname,
+      flavor: req.body.flavor
+    };
 
- 				const dados = {
-	 		    _id: uuid.v4(),
-	 				eventid: req.body.eventid,
-	 				firstname: req.body.firstname,
-          flavor: req.body.flavor
-        };
+    collection.insertOne(dados);
+		res.redirect(`/eventos/${req.body.eventid}`);
 
-        collection.insertOne(dados);
-				res.redirect('/');
-
- 			  db.close();
- 		});
- });
+	  db.close();
+	});
+});
 
 app.post('/comedorias', comedoriaController.create);
 
