@@ -4,11 +4,12 @@
     <link rel="stylesheet" href="criarevento.css">
      <meta charset="utf-8">
      <title>Crie seu evento</title>
+
   </head>
   <body>
 
     <header>
-      <h1><a id="oxifood" href="/" >oxiFood</a></h1>
+      <h1><a id="oxifood" href="/">oxiFood</a></h1>
     </header>
 
     <div class="wrapper">
@@ -47,7 +48,7 @@
       class="campo">
       <input type="text" name="time"
       placeholder="Qual o horário do evento?"
-      id="time" class="datetime-input" required="">
+      id="time" class="datetime-input" required="" onfocus="(this.type='datetime-local')"
     </div>
 
     <div
@@ -76,10 +77,5 @@
   </footer>
  <!--RODAPE-->
  </div>
-
- <script type="text/javascript" src="js/vendor/jquery-3.1.1.min.js"></script>
- <script type="text/javascript" src="js/vendor/inputmask.min.js"></script>
- <script type="text/javascript" src="js/vendor/inputmask.date.extensions.min.js"></script>
- <script type="text/javascript" src="js/criar_evento.js"></script>
-</body>
+  </body>
 </html>

@@ -14,8 +14,9 @@
 
   <div class="wrapper">
   <div class="content">
-  <a  class="button" id="criar" href="/evento">Criar evento</a>
-  <h2>Participe do evento clicando nele!</h2>
+    <div class="button-container" id= "criar">
+      <a class="button" href="/evento" >Criar evento </a>
+    </div>
   <!--TABELA PARA LISTAGEM DE EVENTOS-->
 
   <table border="4">
@@ -23,13 +24,13 @@
   <thead>
     <tr>
       <th>
-        Restaurante
+        Evento
       </th>
       <th>
         Criador
       </th>
       <th>
-        Evento
+        Restaurante
       </th>
       <th>
         Data/hora
@@ -44,13 +45,13 @@
   <% for(var i=0; i<eventos.length; i++) {%>
     <tr>
       <td>
-        <%= eventos[i].restaurant%>
+        <a id="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a>
       </td>
        <td>
          <%= eventos[i].ownername%>
        </td>
        <td>
-         <a href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a>
+         <%= eventos[i].restaurant%>
        </td>
        <td>
          <%= eventos[i].timeAsString%>
