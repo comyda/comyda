@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const comedoriaController = require('./controllers/comedoria');
 const homeController = require('./controllers/home');
 const resultadoController = require('./controllers/resultado');
+const dateService = require('./services/date');
 const app = express();
 const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
@@ -95,27 +96,26 @@ app.get('/evento/:id/resultado', resultadoController.index);
   	});
  });
 
- app.post('/eventos', function (req, res) {
+app.post('/eventos', function (req, res) {
  	const url = 'mongodb://localhost:27017/oxifood';
 
- // Use connect method to connect to the server
- MongoClient.connect(url, function(err, db) {
-   const collection = db.collection('eventos');
+  // Use connect method to connect to the server
+  MongoClient.connect(url, function(err, db) {
+    const collection = db.collection('eventos');
 
- 		const event = {
- 			_id: uuid.v4(),
+    const event = {
+      _id: uuid.v4(),
       restaurant: req.body.restaurant,
       name: req.body.name,
- 			ownername: req.body.ownername,
- 			time: new Date(req.body.time)
- 		};
+      ownername: req.body.ownername,
+      time: dateService.createFromString(req.body.time)
+    };
 
- 					collection.insertOne(event);
- 					res.redirect('/');
+ 		collection.insertOne(event);
+ 		res.redirect('/');
 
- 				db.close();
-
- 	});
+ 		db.close();
+  });
  });
 
 app.post('/participar', function (req, res) {
