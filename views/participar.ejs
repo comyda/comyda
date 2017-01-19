@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <title>Participe do evento</title>
     <link rel="stylesheet" href="/participar.css">
+    <script>
+    function confirma(event) {
+      if(confirm("Você tem certeza que deseja cancelar o evento?")){
+        return true;
+      }else{
+        event.preventDefault();
+      }
+    }
+</script>
   </head>
   <body>
 
@@ -23,12 +32,12 @@
 
     <div>
       <input type="text" name="firstname"
-      placeholder="Nome" required="">
+      placeholder="Qual o seu nome?" required="">
     </div>
 
     <div>
     <select name="flavor" id="choiceoffood" required="">
-    <option value selected>O que você vai comer?</option>
+    <option value selected>O que você quer comer?</option>
     <% for(var i=0; i < foods.length; i++) {%>
       <option value="<%= foods[i].name %>"><%= foods[i].name %></option>
     <% } %>
@@ -95,12 +104,11 @@
   <!--fim-->
 
 <!--BOTAO PARA CANCELAMENTO DE EVENTO-->
- <div class="button-container">
-   <a class="button" href="/event/<%=eventid%>?_method=DELETE">Cancelar evento</a>
+ <div class="button-container" id= "cancelar">
+   <a class="button" href="/event/<%=eventid%>?_method=DELETE" onclick="confirma(event)" >Cancelar evento </a>
  </div>
-<!--BOTAO PARA VOLTAR PARA A HOME-->
+<!--FIM-->
 
- <!--FIM-->
 </div>
 
   <!--RODAPE-->
