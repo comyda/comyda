@@ -75,6 +75,7 @@ select {
 a {
   text-align: center;
   color: #696969;
+	text-decoration: none;
 }
 
 a.button {
