@@ -23,10 +23,11 @@
 
     <div class="wrapper">
       <div class="content">
+
+    <% if(status != "ENCERRADO") {%>
     <h2>Vai participar do evento?</h2>
 
     <!--FORMULARIO PARA SE INSCREVER NO EVENTO-->
-    <% if(status != "ENCERRADO") {%>
     <form
       name="input" action="/participar"  method="post">
       <input type="hidden" name="eventid" value="<%=eventid%>">
@@ -139,12 +140,6 @@
   </tr>
  </table>
  <!--FIM DA TABELA-->
-
-  <!--BOTAO QUE REDIRECIONA PARA A TABELA DE CALCULO-->
-  <div class="button-container">
-    <a class="button" href="/evento/<%=eventid%>/resultado">Calcular resultado</a>
-  </div>
-  <!--fim-->
 
 <!--BOTAO PARA CANCELAMENTO DE EVENTO-->
  <div class="button-container" id= "cancelar">
