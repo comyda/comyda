@@ -8,7 +8,8 @@
     function confirma(event) {
       if(confirm("Você tem certeza que deseja cancelar o evento?")){
         return true;
-      }else{
+      }
+      else {
         event.preventDefault();
       }
     }
@@ -96,6 +97,48 @@
       </tbody>
   </table>
   <!--FIM DA TABELA-->
+
+  <!--TABELA DE CALCULO-->
+ <table border="4">
+   <% for(var i=0; i < result.foods.length; i++) {%>
+     <tr>
+       <td>
+         <%= result.foods[i].quantity %>
+       </td>
+       <td>
+         <%= result.foods[i].name %>
+       </td>
+    </tr>
+   <% } %>
+  <tr>
+    <td style="border-color: rgba(123, 123, 123, 0)">
+      Total de refrigerantes:
+    </td>
+    <td>
+      <%=result.sodaQuantity%>
+    </td>
+    <td style="border-color: rgba(123, 123, 123, 0)">
+      Subtotal:
+    </td>
+    <td>
+      R$<%=result.sodaTotal%>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="border-color: rgba(123, 123, 123, 0)">
+    </td>
+    <td style="border-color: rgba(123, 123, 123, 0)">
+    </td>
+    <td style="border-color: rgba(123, 123, 123, 0)">
+      Total:
+    </td>
+    <td>
+      R$<%=result.total%>
+    </td>
+  </tr>
+ </table>
+ <!--FIM DA TABELA-->
 
   <!--BOTAO QUE REDIRECIONA PARA A TABELA DE CALCULO-->
   <div class="button-container">

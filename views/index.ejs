@@ -20,36 +20,35 @@
   <!--TABELA PARA LISTAGEM DE EVENTOS-->
 
   <table border="4">
-
-  <thead>
-    <tr>
-      <th>
-        Evento
-      </th>
-      <th>
-        Criador
-      </th>
-      <th>
-        Restaurante
-      </th>
-      <th>
-        Data/hora
-      </th>
-      <th>
-         Encerramento
-      </th>
-    </tr>
-  </thead>
+    <thead>
+      <tr>
+        <th>
+          Evento
+        </th>
+        <th>
+          Criador
+        </th>
+        <th>
+          Restaurante
+        </th>
+        <th>
+          Data/hora
+        </th>
+        <th>
+          Encerramento
+        </th>
+      </tr>
+    </thead>
 
   <tbody>
-  <% for(var i=0; i<eventos.length; i++) {%>
-    <tr>
-      <td>
-        <a id="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a>
-      </td>
-       <td>
-         <%= eventos[i].ownername%>
-       </td>
+    <% for(var i=0; i<eventos.length; i++) {%>
+      <tr>
+        <td>
+          <a id="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a>
+        </td>
+        <td>
+          <%= eventos[i].ownername%>
+        </td>
        <td>
          <%= eventos[i].restaurant%>
        </td>
@@ -62,10 +61,10 @@
      </tr>
   <% } %>
   </tbody>
-  </table>
-  <!--FIM DA TABELA-->
+</table>
+<!--FIM DA TABELA-->
 
-  </div>
+</div>
   <!--RODAPÉ-->
   <footer>
     <div id="rodape">

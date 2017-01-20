@@ -2,9 +2,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="criarevento.css">
-     <meta charset="utf-8">
-     <title>Crie seu evento</title>
-
+    <meta charset="utf-8">
+    <title>Crie seu evento</title>
   </head>
   <body>
 
@@ -21,16 +20,14 @@
     <h2>Criar evento</h2>
 
     <div
-  class="campo">
+      class="campo">
       <select name="restaurant" required="">
       <option value selected>Selecione o restaurante</option>
-
       <% for(var i=0; i<comedorias.length; i++) {%>
         <option value="<%= comedorias[i]._id %>"><%= comedorias[i].nameplace %></option>
       <% } %>
     </select>
-
-  </div>
+   </div>
 
     <div
       class="campo">
@@ -62,10 +59,8 @@
     </div>
 
   </div>
-
-  </form>
-  
- <!--FIM DO FORMULÁRIO-->
+ </form>
+<!--FIM DO FORMULÁRIO-->
 
  <!--RODAPE-->
   <footer>

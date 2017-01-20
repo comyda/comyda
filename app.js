@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const comedoriaController = require('./controllers/comedoria');
 const homeController = require('./controllers/home');
-const resultadoController = require('./controllers/resultado');
+const resultadoService = require('./services/resultado');
 const dateService = require('./services/date');
 const app = express();
 const path = require('path');
@@ -33,7 +33,7 @@ app.get('/eventos/:id/:status*?', function (req, res) {
   MongoClient.connect(url, function(err, db) {
     db.collection('eventos').find({_id: req.params.id}).toArray(function(err, eventos) {
       db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray(function(err, comedorias) {
-        db.collection('participar').find({eventid: req.params.id}).toArray(function(err, docs) {
+        db.collection('participar').find({eventid: req.params.id}).toArray(function(err, participants) {
           const sortedFoods = comedorias[0].foods.sort(function(food1, food2) {
             const nameFood1 = food1.name.toUpperCase();
             const nameFood2 = food2.name.toUpperCase();
@@ -42,10 +42,11 @@ app.get('/eventos/:id/:status*?', function (req, res) {
             return 0;
           });
           res.render('participar', {
-            participar: docs,
+            participar: participants,
             eventid: req.params.id,
             foods: sortedFoods,
-            status: req.params.status
+            status: req.params.status,
+            result: resultadoService.calcular(participants, comedorias[0])
           });
           db.close();
         });
@@ -53,8 +54,6 @@ app.get('/eventos/:id/:status*?', function (req, res) {
     });
   });
 });
-
-app.get('/evento/:id/resultado', resultadoController.index);
 
   app.delete('/event/:id', function(req,res) {
   const url = 'mongodb://localhost:27017/oxifood';
