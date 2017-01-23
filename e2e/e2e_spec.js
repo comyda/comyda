@@ -32,12 +32,23 @@ describe('Oxifood', () => {
     expect(list.get(2).getText()).toBe('Brasileirinho');
     expect(list.get(3).getText()).toBe('20/01 às 10:00');
     expect(list.get(4).getText()).toBe('20/01 às 08:00');
-
-
-
-
-
   });
+
+  it('deve cancelar um evento', () => {
+    element(by.className('button')).click();
+    expect(browser.getTitle()).toEqual('Crie seu evento');
+    element(by.tagName('select')).sendKeys('Brasileirinho');
+    element(by.id('name')).sendKeys('Nome do responsavel');
+    element(by.id('event')).sendKeys('Evento Teste');
+    element(by.id('time')).sendKeys('200120901000');
+    element(by.css('.botao input[type="submit"]')).click();
+    element(by.id('nomedoevento')).click();
+    element(by.id('cancelar')).click();
+    var alertDialog = browser.switchTo().alert();
+    expect(alertDialog.accept).toBeDefined();
+    alertDialog.accept();
+  });
+
 
 
 });
