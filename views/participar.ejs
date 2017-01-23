@@ -98,55 +98,18 @@
       </tbody>
   </table>
   <!--FIM DA TABELA-->
-
-  <!--TABELA DE CALCULO-->
- <table border="4">
-   <% for(var i=0; i < result.foods.length; i++) {%>
-     <tr>
-       <td>
-         <%= result.foods[i].quantity %>
-       </td>
-       <td>
-         <%= result.foods[i].name %>
-       </td>
-    </tr>
-   <% } %>
-  <tr>
-    <td style="border-color: rgba(123, 123, 123, 0)">
-      Total de refrigerantes:
-    </td>
-    <td>
-      <%=result.sodaQuantity%>
-    </td>
-    <td style="border-color: rgba(123, 123, 123, 0)">
-      Subtotal:
-    </td>
-    <td>
-      R$<%=result.sodaTotal%>
-    </td>
-  </tr>
-
-  <tr>
-    <td style="border-color: rgba(123, 123, 123, 0)">
-    </td>
-    <td style="border-color: rgba(123, 123, 123, 0)">
-    </td>
-    <td style="border-color: rgba(123, 123, 123, 0)">
-      Total:
-    </td>
-    <td>
-      R$<%=result.total%>
-    </td>
-  </tr>
- </table>
  <!--FIM DA TABELA-->
-
 <!--BOTAO PARA CANCELAMENTO DE EVENTO-->
  <div class="button-container" id= "cancelar">
    <a class="button" href="/event/<%=eventid%>?_method=DELETE" onclick="confirma(event)" >Cancelar evento </a>
  </div>
 <!--FIM-->
 
+ <!--BOTAO QUE REDIRECIONA PARA A TABELA DE CALCULO-->
+  <div class="button-container" id="calcular">
+    <a class="button" href="#">Calcular resultado</a>
+  </div>
+<!--fim-->
 </div>
 
   <!--RODAPE-->
@@ -159,6 +122,50 @@
     </div>
   </footer>
   <!--RODAPE-->
-</div>
-  </body>
+  </div>
+  <div class="resultado">
+    <div class="box">
+   <table border="4">
+     <% for(var i=0; i < result.foods.length; i++) {%>
+       <tr>
+         <td>
+           <%= result.foods[i].quantity %>
+         </td>
+         <td>
+           <%= result.foods[i].name %>
+         </td>
+      </tr>
+     <% } %>
+    <tr>
+      <td style="border-color: rgba(123, 123, 123, 0)">
+        Total de refrigerantes:
+      </td>
+      <td>
+        <%=result.sodaQuantity%>
+      </td>
+      <td style="border-color: rgba(123, 123, 123, 0)">
+        Subtotal:
+      </td>
+      <td>
+        R$<%=result.sodaTotal%>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="border-color: rgba(123, 123, 123, 0)">
+      </td>
+      <td style="border-color: rgba(123, 123, 123, 0)">
+      </td>
+      <td style="border-color: rgba(123, 123, 123, 0)">
+        Total:
+      </td>
+      <td>
+        R$<%=result.total%>
+      </td>
+    </tr>
+   </table>
+  </div>
+  </div>
+  <script type="text/javascript" src="../../js/participar.js"></script>
+</body>
 </html>
