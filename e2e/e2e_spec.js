@@ -1,7 +1,15 @@
 const MongoClient = require('mongodb').MongoClient;
-
+const http = require('http');
+const app = require('../app');
+const PORT = 3000;
 
 describe('Oxifood', () => {
+  let server;
+
+  beforeAll(() => server = http.createServer(app));
+
+  afterAll(() => server.close());
+
   beforeEach(() => {
     const url = 'mongodb://localhost:27017/oxifood';
 

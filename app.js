@@ -138,3 +138,5 @@ app.post('/participar', function (req, res) {
 app.post('/comedorias', comedoriaController.create);
 
 app.listen(process.env.PORT || 3000, () => console.log('Oxifood rodando!'));
+
+module.exports = app;
