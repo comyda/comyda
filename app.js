@@ -119,6 +119,7 @@ app.post('/participar', function (req, res) {
 	    _id: uuid.v4(),
 			eventid: req.body.eventid,
 			firstname: req.body.firstname,
+      lastname: req.body.lastname,
       flavor: req.body.flavor
     };
 

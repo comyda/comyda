@@ -28,6 +28,11 @@
     </div>
 
     <div>
+      <input type="text" name="lastname"
+      placeholder="Qual o seu sobrenome?" id="lastname" required="">
+    </div>
+
+    <div>
     <select name="flavor" id="choiceoffood" required="">
     <option value selected>O que você quer comer?</option>
     <% for(var i=0; i < foods.length; i++) {%>
@@ -63,7 +68,7 @@
     <% for(var i=0; i<participar.length; i++) {%>
       <tr>
         <td>
-          <%= participar[i].firstname%>
+          <%= participar[i].firstname%> <%= participar[i].lastname%>
         </td>
         <td>
           <%= participar[i].flavor%>
@@ -131,9 +136,7 @@
        </tr>
     </thead>
      <% for(var i=0; i < result.foods.length; i++) {%>
-
-
-         <tbody>
+       <tbody>
          <td>
            <%= result.foods[i].quantity %>
          </td>
@@ -153,7 +156,6 @@
       <td>
         Refrigerante
       </td>
-
       <td>
         R$<%=result.sodaTotal%>
       </td>
