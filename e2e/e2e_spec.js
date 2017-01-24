@@ -66,5 +66,25 @@ describe('Oxifood', () => {
     expect(list.get(1).getText()).toBe('Arroz a grega');
   });
 
+  it('deve calcular o resultado', () => {
+    element(by.className('button')).click();
+    expect(browser.getTitle()).toEqual('Crie seu evento');
+    element(by.tagName('select')).sendKeys('Brasileirinho');
+    element(by.id('name')).sendKeys('Nome do responsavel');
+    element(by.id('event')).sendKeys('Evento Teste');
+    element(by.id('time')).sendKeys('200120901000');
+    element(by.css('.botao input[type="submit"]')).click();
+    element(by.id('nomedoevento')).click();
+    element(by.id('firstname')).sendKeys('Rayana');
+    element(by.id('choiceoffood')).sendKeys('Arroz a grega');
+    element(by.css('.botao input[type="submit"]')).click();
+    element(by.id('firstname')).sendKeys('Leonardo');
+    element(by.id('choiceoffood')).sendKeys('Arroz carreteiro');
+    element(by.css('.botao input[type="submit"]')).click();
+    element(by.id('calcular')).click();
+    browser.pause();
+
+  });
+
 
 });
