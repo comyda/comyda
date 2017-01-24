@@ -31,6 +31,11 @@ app.get('/eventos/:id/:status*?', function (req, res) {
   // Use connect method to connect to the server
   MongoClient.connect(url, function(err, db) {
     db.collection('eventos').find({_id: req.params.id}).toArray(function(err, eventos) {
+      if (eventos.length === 0) {
+        res.redirect('/');
+        db.close();
+        return;
+      }
       db.collection('comedorias').find({_id: eventos[0].restaurant}).toArray(function(err, comedorias) {
         db.collection('participar').find({eventid: req.params.id}).toArray(function(err, participants) {
           const sortedFoods = comedorias[0].foods.sort(function(food1, food2) {

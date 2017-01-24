@@ -84,5 +84,10 @@ describe('Oxifood', () => {
     element(by.id('calcular')).click();
   });
 
-
+  describe('quando acessa eventos inexistentes', () => {
+    it('deve voltar para home', () => {
+      browser.get('http://localhost:3000/eventos/idnãoexistente');
+      expect(browser.getTitle()).toEqual('oxiFood');
+    });
+  });
 });
