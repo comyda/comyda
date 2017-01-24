@@ -130,7 +130,7 @@
      <% for(var i=0; i < result.foods.length; i++) {%>
        <tr>
          <td style="border-color: rgba(123, 123, 123, 0)">
-           Pedidos:
+           Opção de comida:
          </td>
          <td>
            <%= result.foods[i].quantity %>
@@ -138,6 +138,10 @@
          <td>
            <%= result.foods[i].name %>
          </td>
+         <td>
+           <%= result.foods[i].price %>
+         </td>
+
       </tr>
      <% } %>
     <tr>
@@ -154,13 +158,12 @@
         R$<%=result.sodaTotal%>
       </td>
     </tr>
-
     <tr>
       <td style="border-color: rgba(123, 123, 123, 0)">
       </td>
       <td style="border-color: rgba(123, 123, 123, 0)">
       </td>
-      <td style="border-color: rgba(123, 123, 123, 0)">
+      <td style="border-color: rgba(123, 123, 123, 0)" style="color: red">
         Total:
       </td>
       <td>

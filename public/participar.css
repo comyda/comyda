@@ -23,7 +23,9 @@ table {
 }
 
 .resultado table {
-  background: #fff;
+  background: #FAEBD7;
+  border-radius: 0.5em;
+  font-size: 25px;
 }
 
 body {
