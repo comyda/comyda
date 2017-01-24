@@ -1,6 +1,9 @@
 {
   "name": "comyda",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=7.4"
+  },
   "scripts": {
     "start": "node app.js",
     "test": "./node_modules/protractor/bin/protractor conf-e2e.js",
