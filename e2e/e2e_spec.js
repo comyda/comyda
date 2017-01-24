@@ -49,6 +49,22 @@ describe('Oxifood', () => {
     alertDialog.accept();
   });
 
+  it('deve participar de um evento', () => {
+    element(by.className('button')).click();
+    expect(browser.getTitle()).toEqual('Crie seu evento');
+    element(by.tagName('select')).sendKeys('Brasileirinho');
+    element(by.id('name')).sendKeys('Nome do responsavel');
+    element(by.id('event')).sendKeys('Evento Teste');
+    element(by.id('time')).sendKeys('200120901000');
+    element(by.css('.botao input[type="submit"]')).click();
+    element(by.id('nomedoevento')).click();
+    element(by.id('firstname')).sendKeys('Rayana');
+    element(by.id('choiceoffood')).sendKeys('Arroz a grega');
+    element(by.css('.botao input[type="submit"]')).click();
+    let list = element.all(by.css('tr td'));
+    expect(list.get(0).getText()).toBe('Rayana');
+    expect(list.get(1).getText()).toBe('Arroz a grega');
+  });
 
 
 });
