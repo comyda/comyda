@@ -82,8 +82,6 @@ describe('Oxifood', () => {
     element(by.id('choiceoffood')).sendKeys('Arroz carreteiro');
     element(by.css('.botao input[type="submit"]')).click();
     element(by.id('calcular')).click();
-    browser.pause();
-
   });
 
 
