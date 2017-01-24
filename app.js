@@ -10,6 +10,7 @@ const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
 const uuid = require('uuid');
 const ObjectId = require('mongodb').ObjectID;
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/oxifood';
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -27,8 +28,6 @@ app.get('/', homeController.index);
 
 
 app.get('/eventos/:id/:status*?', function (req, res) {
-  const url = 'mongodb://localhost:27017/oxifood';
-
   // Use connect method to connect to the server
   MongoClient.connect(url, function(err, db) {
     db.collection('eventos').find({_id: req.params.id}).toArray(function(err, eventos) {
@@ -56,7 +55,6 @@ app.get('/eventos/:id/:status*?', function (req, res) {
 });
 
   app.delete('/event/:id', function(req,res) {
-  const url = 'mongodb://localhost:27017/oxifood';
     MongoClient.connect(url, function(err, db) {
 
   			const collection = db.collection('eventos');
@@ -68,7 +66,6 @@ app.get('/eventos/:id/:status*?', function (req, res) {
   });
 
   app.delete('/participar/:id', function(req,res) {
-  const url = 'mongodb://localhost:27017/oxifood';
     MongoClient.connect(url, function(err, db) {
 
   			const collection = db.collection('participar');
@@ -80,8 +77,6 @@ app.get('/eventos/:id/:status*?', function (req, res) {
   });
 
  app.get('/evento', function(req, res) {
- const url = 'mongodb://localhost:27017/oxifood';
-
   // Use connect method to connect to the server
   	MongoClient.connect(url, function(err, db) {
 
@@ -96,8 +91,6 @@ app.get('/eventos/:id/:status*?', function (req, res) {
  });
 
 app.post('/eventos', function (req, res) {
- 	const url = 'mongodb://localhost:27017/oxifood';
-
   // Use connect method to connect to the server
   MongoClient.connect(url, function(err, db) {
     const collection = db.collection('eventos');
@@ -118,8 +111,6 @@ app.post('/eventos', function (req, res) {
  });
 
 app.post('/participar', function (req, res) {
-  const url = 'mongodb://localhost:27017/oxifood';
-
  	// Use connect method to connect to the server
  	MongoClient.connect(url, function(err, db) {
  	  const collection = db.collection('participar');

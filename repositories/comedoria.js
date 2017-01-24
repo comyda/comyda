@@ -1,11 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
 const uuid = require('uuid');
 
-module.exports= {
+const ComedoriaRepository = {
+  url: process.env.MONGODB_URI || 'mongodb://localhost:27017/oxifood',
   findOne: (id, callback) => {
-    const url = 'mongodb://localhost:27017/oxifood';
-
-    MongoClient.connect(url, (err, db) => {
+    MongoClient.connect(ComedoriaRepository.url, (err, db) => {
       db.collection('comedorias').find({_id: id}).toArray((err, comedorias) => {
         callback(comedorias[0]);
         db.close();
@@ -13,9 +12,7 @@ module.exports= {
     });
   },
   add: (body, callback) => {
-    const url = 'mongodb://localhost:27017/oxifood';
-
-    MongoClient.connect(url, (err, db) => {
+    MongoClient.connect(ComedoriaRepository.url, (err, db) => {
       const food = {
         _id: uuid.v4(),
         nameplace: body.nameplace,
@@ -35,12 +32,12 @@ module.exports= {
     });
   },
   findMany: (ids, callback) => {
-    const url = 'mongodb://localhost:27017/oxifood';
-
-    MongoClient.connect(url, (err, db) => {
+    MongoClient.connect(ComedoriaRepository.url, (err, db) => {
       db.collection('comedorias').find({'_id': {'$in': ids}}).toArray((err, comedorias) => {
         callback(comedorias);
       });
     });
   }
 }
+
+module.exports = ComedoriaRepository;
