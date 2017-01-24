@@ -159,3 +159,15 @@ h1 {
   display: table-cell;
   vertical-align: middle;
 }
+
+#calculo {
+  color: #DC143C;
+  font-weight: bold;
+}
+
+#total {
+  color: black;
+  font-weight: bold;
+  border-color: rgba(123, 123, 123, 0);
+  position: relative;
+}

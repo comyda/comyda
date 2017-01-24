@@ -4,16 +4,6 @@
     <meta charset="utf-8">
     <title>Participe do evento</title>
     <link rel="stylesheet" href="/participar.css">
-    <script>
-    function confirma(event) {
-      if(confirm("Você tem certeza que deseja cancelar o evento?")){
-        return true;
-      }
-      else {
-        event.preventDefault();
-      }
-    }
-</script>
   </head>
   <body>
 
@@ -127,11 +117,23 @@
   <div class="resultado">
     <div class="box">
    <table border="4">
-     <% for(var i=0; i < result.foods.length; i++) {%>
+     <thead>
        <tr>
-         <td style="border-color: rgba(123, 123, 123, 0)">
-           Opção de comida:
-         </td>
+         <th>
+           Quantidade
+         </th>
+         <th>
+           Opção de comida
+         </th>
+         <th>
+           Valor unitário
+         </th>
+       </tr>
+    </thead>
+     <% for(var i=0; i < result.foods.length; i++) {%>
+
+
+         <tbody>
          <td>
            <%= result.foods[i].quantity %>
          </td>
@@ -141,19 +143,17 @@
          <td>
            <%= result.foods[i].price %>
          </td>
-
-      </tr>
+       </tr>
+     </tbody>
      <% } %>
     <tr>
-      <td style="border-color: rgba(123, 123, 123, 0)">
-        Total de refrigerantes:
-      </td>
       <td>
         <%=result.sodaQuantity%>
       </td>
-      <td style="border-color: rgba(123, 123, 123, 0)">
-        Subtotal:
+      <td>
+        Refrigerante
       </td>
+
       <td>
         R$<%=result.sodaTotal%>
       </td>
@@ -161,12 +161,10 @@
     <tr>
       <td style="border-color: rgba(123, 123, 123, 0)">
       </td>
-      <td style="border-color: rgba(123, 123, 123, 0)">
-      </td>
-      <td style="border-color: rgba(123, 123, 123, 0)" style="color: red">
+      <td id="total">
         Total:
       </td>
-      <td>
+      <td id="calculo">
         R$<%=result.total%>
       </td>
     </tr>
@@ -174,5 +172,6 @@
   </div>
   </div>
   <script type="text/javascript" src="../../js/participar.js"></script>
+  <script type="text/javascript" src="../../js/cancelar.js"></script>
 </body>
 </html>
