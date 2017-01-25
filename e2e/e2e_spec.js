@@ -67,10 +67,12 @@ describe('Oxifood', () => {
     element(by.css('.botao input[type="submit"]')).click();
     element(by.id('nomedoevento')).click();
     element(by.id('firstname')).sendKeys('Rayana');
+    element(by.id('lastname')).sendKeys('Goncalves');
     element(by.id('choiceoffood')).sendKeys('Arroz a grega');
     element(by.css('.botao input[type="submit"]')).click();
+    browser.pause();
     let list = element.all(by.css('tr td'));
-    expect(list.get(0).getText()).toBe('Rayana');
+    expect(list.get(0).getText()).toBe('Rayana Goncalves');
     expect(list.get(1).getText()).toBe('Arroz a grega');
   });
 
@@ -84,9 +86,11 @@ describe('Oxifood', () => {
     element(by.css('.botao input[type="submit"]')).click();
     element(by.id('nomedoevento')).click();
     element(by.id('firstname')).sendKeys('Rayana');
+    element(by.id('lastname')).sendKeys('Goncalves');
     element(by.id('choiceoffood')).sendKeys('Arroz a grega');
     element(by.css('.botao input[type="submit"]')).click();
     element(by.id('firstname')).sendKeys('Leonardo');
+    element(by.id('lastname')).sendKeys('Bezerra');
     element(by.id('choiceoffood')).sendKeys('Arroz carreteiro');
     element(by.css('.botao input[type="submit"]')).click();
     element(by.id('calcular')).click();
