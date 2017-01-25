@@ -3,6 +3,7 @@ const http = require('http');
 const app = require('../app');
 const eventoPage = require('./pages/evento');
 const homePage = require('./pages/home');
+const eventCreationPage = require('./pages/event_creation');
 const PORT = 3000;
 
 describe('Oxifood', () => {
@@ -30,12 +31,7 @@ describe('Oxifood', () => {
   it('deve criar um evento', () => {
     homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
-
-    element(by.tagName('select')).sendKeys('Brasileirinho');
-    element(by.id('name')).sendKeys('Nome do responsavel');
-    element(by.id('event')).sendKeys('Evento Teste');
-    element(by.id('time')).sendKeys('200120901000');
-    element(by.css('.botao input[type="submit"]')).click();
+    eventCreationPage.createEvent('Brasileirinho', 'Nome do responsavel', 'Evento Teste', '200120901000');
     let list = element.all(by.css('tr td'));
     expect(list.get(0).getText()).toBe('Evento Teste');
     expect(list.get(1).getText()).toBe('Nome do responsavel');
@@ -47,11 +43,7 @@ describe('Oxifood', () => {
   it('deve cancelar um evento', () => {
     homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
-    element(by.tagName('select')).sendKeys('Brasileirinho');
-    element(by.id('name')).sendKeys('Nome do responsavel');
-    element(by.id('event')).sendKeys('Evento Teste');
-    element(by.id('time')).sendKeys('200120901000');
-    element(by.css('.botao input[type="submit"]')).click();
+    eventCreationPage.createEvent('Brasileirinho', 'Nome do responsavel', 'Evento Teste', '200120901000');
     homePage.goToEventPage();
     element(by.id('cancelar')).click();
     var alertDialog = browser.switchTo().alert();
@@ -62,11 +54,7 @@ describe('Oxifood', () => {
   it('deve participar de um evento', () => {
     homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
-    element(by.tagName('select')).sendKeys('Brasileirinho');
-    element(by.id('name')).sendKeys('Nome do responsavel');
-    element(by.id('event')).sendKeys('Evento Teste');
-    element(by.id('time')).sendKeys('200120901000');
-    element(by.css('.botao input[type="submit"]')).click();
+    eventCreationPage.createEvent('Brasileirinho', 'Nome do responsavel', 'Evento Teste', '200120901000');
     homePage.goToEventPage();
     eventoPage.addParticipant('Rayana','Goncalves','Arroz a grega');
     let list = element.all(by.css('tr td'));
@@ -77,11 +65,7 @@ describe('Oxifood', () => {
   it('deve calcular o resultado', () => {
     homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
-    element(by.tagName('select')).sendKeys('Brasileirinho');
-    element(by.id('name')).sendKeys('Nome do responsavel');
-    element(by.id('event')).sendKeys('Evento Teste');
-    element(by.id('time')).sendKeys('200120901000');
-    element(by.css('.botao input[type="submit"]')).click();
+    eventCreationPage.createEvent('Brasileirinho', 'Nome do responsavel', 'Evento Teste', '200120901000');
     homePage.goToEventPage();
     eventoPage.addParticipant('Rayana','Goncalves','Arroz a grega');
     eventoPage.addParticipant('Leonardo','Bezerra','Arroz carreteiro');
