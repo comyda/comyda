@@ -70,7 +70,6 @@ describe('Oxifood', () => {
     element(by.id('lastname')).sendKeys('Goncalves');
     element(by.id('choiceoffood')).sendKeys('Arroz a grega');
     element(by.css('.botao input[type="submit"]')).click();
-    browser.pause();
     let list = element.all(by.css('tr td'));
     expect(list.get(0).getText()).toBe('Rayana Goncalves');
     expect(list.get(1).getText()).toBe('Arroz a grega');
