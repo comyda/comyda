@@ -99,7 +99,7 @@ module.exports = {
     const foods = generateFoods(participants, comedoria);
     return {
       foods: foods,
-      total: calculateTotal(foods, participants, comedoria),
+      total: Math.ceil(calculateTotal(foods, participants, comedoria)),
       sodaTotal: getSodaTotal(participants),
       sodaQuantity: getSodaQuantity(participants)
     };
