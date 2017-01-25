@@ -2,6 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const http = require('http');
 const app = require('../app');
 const eventoPage = require('./pages/evento');
+const homePage = require('./pages/home');
 const PORT = 3000;
 
 describe('Oxifood', () => {
@@ -27,7 +28,7 @@ describe('Oxifood', () => {
   });
 
   it('deve criar um evento', () => {
-    element(by.className('button')).click();
+    homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
 
     element(by.tagName('select')).sendKeys('Brasileirinho');
@@ -44,14 +45,14 @@ describe('Oxifood', () => {
   });
 
   it('deve cancelar um evento', () => {
-    element(by.className('button')).click();
+    homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
     element(by.tagName('select')).sendKeys('Brasileirinho');
     element(by.id('name')).sendKeys('Nome do responsavel');
     element(by.id('event')).sendKeys('Evento Teste');
     element(by.id('time')).sendKeys('200120901000');
     element(by.css('.botao input[type="submit"]')).click();
-    element(by.id('nomedoevento')).click();
+    homePage.goToEventPage();
     element(by.id('cancelar')).click();
     var alertDialog = browser.switchTo().alert();
     expect(alertDialog.accept).toBeDefined();
@@ -59,14 +60,14 @@ describe('Oxifood', () => {
   });
 
   it('deve participar de um evento', () => {
-    element(by.className('button')).click();
+    homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
     element(by.tagName('select')).sendKeys('Brasileirinho');
     element(by.id('name')).sendKeys('Nome do responsavel');
     element(by.id('event')).sendKeys('Evento Teste');
     element(by.id('time')).sendKeys('200120901000');
     element(by.css('.botao input[type="submit"]')).click();
-    element(by.id('nomedoevento')).click();
+    homePage.goToEventPage();
     eventoPage.addParticipant('Rayana','Goncalves','Arroz a grega');
     let list = element.all(by.css('tr td'));
     expect(list.get(0).getText()).toBe('Rayana Goncalves');
@@ -74,14 +75,14 @@ describe('Oxifood', () => {
   });
 
   it('deve calcular o resultado', () => {
-    element(by.className('button')).click();
+    homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
     element(by.tagName('select')).sendKeys('Brasileirinho');
     element(by.id('name')).sendKeys('Nome do responsavel');
     element(by.id('event')).sendKeys('Evento Teste');
     element(by.id('time')).sendKeys('200120901000');
     element(by.css('.botao input[type="submit"]')).click();
-    element(by.id('nomedoevento')).click();
+    homePage.goToEventPage();
     eventoPage.addParticipant('Rayana','Goncalves','Arroz a grega');
     eventoPage.addParticipant('Leonardo','Bezerra','Arroz carreteiro');
     element(by.id('calcular')).click();
@@ -91,6 +92,12 @@ describe('Oxifood', () => {
     it('deve voltar para home', () => {
       browser.get('http://localhost:3000/eventos/idnãoexistente');
       expect(browser.getTitle()).toEqual('oxiFood');
+    });
+  });
+
+  xdescribe('quando cadastra dois usuários com mesmo nome e sobrenome',() => {
+    it('deve exibir uma mensagem de informação', () => {
+
     });
   });
 });
