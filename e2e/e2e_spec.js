@@ -1,6 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const http = require('http');
 const app = require('../app');
+const eventoPage = require('./pages/evento');
 const PORT = 3000;
 
 describe('Oxifood', () => {
@@ -66,10 +67,7 @@ describe('Oxifood', () => {
     element(by.id('time')).sendKeys('200120901000');
     element(by.css('.botao input[type="submit"]')).click();
     element(by.id('nomedoevento')).click();
-    element(by.id('firstname')).sendKeys('Rayana');
-    element(by.id('lastname')).sendKeys('Goncalves');
-    element(by.id('choiceoffood')).sendKeys('Arroz a grega');
-    element(by.css('.botao input[type="submit"]')).click();
+    eventoPage.addParticipant('Rayana','Goncalves','Arroz a grega');
     let list = element.all(by.css('tr td'));
     expect(list.get(0).getText()).toBe('Rayana Goncalves');
     expect(list.get(1).getText()).toBe('Arroz a grega');
@@ -84,14 +82,8 @@ describe('Oxifood', () => {
     element(by.id('time')).sendKeys('200120901000');
     element(by.css('.botao input[type="submit"]')).click();
     element(by.id('nomedoevento')).click();
-    element(by.id('firstname')).sendKeys('Rayana');
-    element(by.id('lastname')).sendKeys('Goncalves');
-    element(by.id('choiceoffood')).sendKeys('Arroz a grega');
-    element(by.css('.botao input[type="submit"]')).click();
-    element(by.id('firstname')).sendKeys('Leonardo');
-    element(by.id('lastname')).sendKeys('Bezerra');
-    element(by.id('choiceoffood')).sendKeys('Arroz carreteiro');
-    element(by.css('.botao input[type="submit"]')).click();
+    eventoPage.addParticipant('Rayana','Goncalves','Arroz a grega');
+    eventoPage.addParticipant('Leonardo','Bezerra','Arroz carreteiro');
     element(by.id('calcular')).click();
   });
 
