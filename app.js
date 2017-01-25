@@ -50,9 +50,10 @@ app.get('/eventos/:id/:status*?', function (req, res) {
             eventid: req.params.id,
             foods: sortedFoods,
             status: req.params.status,
-            result: resultadoService.calcular(participants, comedorias[0])
+            result: resultadoService.calcular(participants, comedorias[0]),
+            comedorias: comedorias[0]
           });
-          db.close();
+        db.close();
         });
       });
     });

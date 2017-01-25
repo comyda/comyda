@@ -135,8 +135,9 @@
          </th>
        </tr>
     </thead>
-     <% for(var i=0; i < result.foods.length; i++) {%>
-       <tbody>
+
+  <% for(var i=0; i < result.foods.length; i++) {%>
+      <tbody>
          <td>
            <%= result.foods[i].quantity %>
          </td>
@@ -149,6 +150,7 @@
        </tr>
      </tbody>
      <% } %>
+
     <tr>
       <td>
         <%=result.sodaQuantity%>
@@ -160,20 +162,32 @@
         R$<%=result.sodaTotal%>
       </td>
     </tr>
+
     <tr>
       <td style="border-color: rgba(123, 123, 123, 0)">
       </td>
-      <td id="total">
-        Total:
+      <td id="negrito">
+        Valor Total:
       </td>
-      <td id="calculo">
+      <td id="vermelho">
         R$<%=result.total%>
       </td>
+      <tbody>
+        <td style="border-color: rgba(123, 123, 123, 0)">
+        </td>
+        <td id="negrito">
+          Telefone:
+        </td>
+        <td id="vermelho">
+          <%=comedorias.phone%>
+        </td>
+      </tbody>
     </tr>
+
    </table>
   </div>
-  </div>
-  <script type="text/javascript" src="../../js/participar.js"></script>
-  <script type="text/javascript" src="../../js/cancelar.js"></script>
+</div>
+<script type="text/javascript" src="../../js/participar.js"></script>
+<script type="text/javascript" src="../../js/cancelar.js"></script>
 </body>
 </html>

@@ -160,14 +160,15 @@ h1 {
   vertical-align: middle;
 }
 
-#calculo {
+#vermelho {
   color: #DC143C;
   font-weight: bold;
 }
 
-#total {
+#negrito {
   color: black;
   font-weight: bold;
   border-color: rgba(123, 123, 123, 0);
   position: relative;
+  text-align: right;
 }
