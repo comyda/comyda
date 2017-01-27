@@ -3,6 +3,32 @@ var resultadoBox = document.querySelector('.resultado');
 var header = document.querySelector('header');
 var wrapper = document.querySelector('.wrapper');
 
+new Vue({
+  el: 'form',
+  data: {
+    firstname: '',
+    lastname: ''
+  },
+  mounted: function() {
+    this.eventId = location.pathname.split('/')[2];
+  },
+  methods: {
+    validateBeforeSending: function(event) {
+      event.preventDefault();
+
+      var url = '/eventos/' + this.eventId + '/participants';
+      var params = {firstname: this.firstname, lastname: this.lastname};
+      this.$http.get(url, {params: params}).then((response) => {
+        if (response.body.length > 0) {
+          alert('Nome e Sobrenome já cadastrado no evento');
+        } else {
+          document.querySelector('form').submit();
+        }
+      });
+    }
+  }
+});
+
 calculateButton.addEventListener('click', function(){
   resultadoBox.style.display = "table";
 

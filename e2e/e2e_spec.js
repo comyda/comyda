@@ -17,7 +17,8 @@ describe('Oxifood', () => {
     const url = 'mongodb://localhost:27017/oxifood';
 
     MongoClient.connect(url, (err, db) => {
-      db.collection('eventos').deleteMany()
+      db.collection('eventos').deleteMany();
+      db.collection('participar').deleteMany();
       db.close();
     });
     browser.ignoreSynchronization = true;
@@ -46,7 +47,7 @@ describe('Oxifood', () => {
     eventCreationPage.createEvent('Brasileirinho', 'Nome do responsavel', 'Evento Teste', '200120901000');
     homePage.goToEventPage();
     element(by.id('cancelar')).click();
-    var alertDialog = browser.switchTo().alert();
+    const alertDialog = browser.switchTo().alert();
     expect(alertDialog.accept).toBeDefined();
     alertDialog.accept();
   });
@@ -79,9 +80,22 @@ describe('Oxifood', () => {
     });
   });
 
-  xdescribe('quando cadastra dois usuários com mesmo nome e sobrenome',() => {
+  describe('quando cadastra dois usuários com mesmo nome e sobrenome', () => {
     it('deve exibir uma mensagem de informação', () => {
+      homePage.goToCreationEventPage();
+      eventCreationPage.createEvent('Brasileirinho', 'Nome do responsavel', 'Evento Teste', '200120901000');
+      homePage.goToEventPage();
+      eventoPage.addParticipant('Rayana','Goncalves','Arroz a grega');
+      eventoPage.addParticipant('Rayana','Goncalves','Arroz carreteiro');
 
+      const alertDialog = browser.switchTo().alert();
+      expect(alertDialog.getText()).toBe('Nome e Sobrenome já cadastrado no evento');
+      alertDialog.accept();
+
+      element.all(by.css('.content table tbody tr td:first-child')).then(participantNames => {
+        expect(participantNames.length).toBe(2);
+        expect(participantNames[0].getText()).toBe('Rayana Goncalves');
+      });
     });
   });
 });

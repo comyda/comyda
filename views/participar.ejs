@@ -18,33 +18,31 @@
     <h2>Vai participar do evento?</h2>
 
     <!--FORMULARIO PARA SE INSCREVER NO EVENTO-->
-    <form
-      name="input" action="/participar"  method="post">
+    <form name="input" action="/participar"  method="post">
       <input type="hidden" name="eventid" value="<%=eventid%>">
 
-    <div>
-      <input type="text" name="firstname"
-      placeholder="Qual o seu nome?" id="firstname" required="">
-    </div>
+      <div>
+        <input type="text" name="firstname" v-model="firstname"
+        placeholder="Qual o seu nome?" id="firstname" required="">
+      </div>
 
-    <div>
-      <input type="text" name="lastname"
-      placeholder="Qual o seu sobrenome?" id="lastname" required="">
-    </div>
+      <div>
+        <input type="text" name="lastname" v-model="lastname"
+        placeholder="Qual o seu sobrenome?" id="lastname" required="">
+      </div>
 
-    <div>
-    <select name="flavor" id="choiceoffood" required="">
-    <option value selected>O que você quer comer?</option>
-    <% for(var i=0; i < foods.length; i++) {%>
-      <option value="<%= foods[i].name %>"><%= foods[i].name %></option>
-    <% } %>
-    </select>
-  </div>
+      <div>
+        <select name="flavor" id="choiceoffood" required="">
+          <option value selected>O que você quer comer?</option>
+          <% for(var i=0; i < foods.length; i++) {%>
+            <option value="<%= foods[i].name %>"><%= foods[i].name %></option>
+          <% } %>
+        </select>
+      </div>
 
-    <div
-    class="botao">
-      <input type="submit" value="Enviar">
-    </div>
+      <div class="botao">
+        <input type="submit" value="Enviar" v-on:click="validateBeforeSending">
+      </div>
      </form>
      <% } %>
     <!--FIM DO FORMULARIO-->
@@ -187,6 +185,8 @@
    </table>
   </div>
 </div>
+<script type="text/javascript" src="../../js/vendor/vue.js"></script>
+<script type="text/javascript" src="../../js/vendor/vue-resource.min.js"></script>
 <script type="text/javascript" src="../../js/participar.js"></script>
 <script type="text/javascript" src="../../js/cancelar.js"></script>
 </body>

@@ -26,6 +26,18 @@ app.use(function(req, res, next){
 
 app.get('/', homeController.index);
 
+app.get('/eventos/:eventId/participants', (req, res) => {
+  MongoClient.connect(url, (err, db) => {
+    db.collection('participar').find({
+      eventid: req.params.eventId,
+      firstname: req.query.firstname,
+      lastname: req.query.lastname
+    }).toArray((err, participants) => {
+      res.json(participants);
+      db.close();
+    });
+  });
+});
 
 app.get('/eventos/:id/:status*?', function (req, res) {
   // Use connect method to connect to the server
