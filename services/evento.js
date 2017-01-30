@@ -20,7 +20,7 @@ module.exports = {
 
       function getStatus(time) {
         const value = time.getTime() - Date.now();
-        if (value < 0) return "ENCERRADO";
+        if (value < 0) return "PEDIDO ENCERRADO";
         return "";
       }
 
@@ -33,6 +33,7 @@ module.exports = {
       evento.finishedTime = generateTimeAsString(finishedTime);
 
       evento.status = getStatus(evento.time);
+
     });
 
     return eventos;

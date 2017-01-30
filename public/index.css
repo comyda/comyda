@@ -95,6 +95,23 @@ body  {
 
 #nomedoevento {
   font-weight: bold;
-  color: #DC143C;
+  color: #FF7F50;
   text-decoration: none;
+  font-size: 20px;
+}
+
+.order {
+  background: #FFFAFA;
+  list-style: none;
+  margin: 20px 0;
+  padding: -10px -10px
+}
+
+#criar {
+  font-size: 20px;
+}
+
+#encerrado {
+  font-size: 18px;
+  font-weight: bold;
 }
