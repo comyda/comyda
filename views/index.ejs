@@ -21,27 +21,21 @@
     <% for(var i=0; i<eventos.length; i++) {%>
 
     <li class="order">
-
-
       <div>
-        <a id="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a>
+        <a class="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a>
       </div>
 
       <div class="who">
         <%= eventos[i].ownername %> está pedindo em <%= eventos[i].restaurant%>
       </div>
 
-
       <div class="closes">
         O pedido encerra em <%= eventos[i].finishedTime %> <a id="encerrado"><%= eventos[i].status %></a>
       </div>
 
       <div class="delivery">
-        <class="is-desktop">O evento acontecerá em  <%= eventos[i].timeAsString%>
+        O evento acontecerá em  <%= eventos[i].timeAsString%>
       </div>
-
-      <div class="clear"></div>
-
     </li>
     <% } %>
 

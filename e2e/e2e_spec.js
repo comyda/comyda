@@ -6,6 +6,22 @@ const homePage = require('./pages/home');
 const eventCreationPage = require('./pages/event_creation');
 const PORT = 3000;
 
+function getFutureDate() {
+  let today = new Date();
+  today.setYear(today.getFullYear() + 7);
+
+  return today;
+}
+
+function formatDateAsString(date) {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return day + month + year + hours + minutes;
+}
+
 describe('Oxifood', () => {
   let server;
 
@@ -32,13 +48,13 @@ describe('Oxifood', () => {
   it('deve criar um evento', () => {
     homePage.goToCreationEventPage();
     expect(browser.getTitle()).toEqual('Crie seu evento');
+    console.log(formatDateAsString(getFutureDate()));
     eventCreationPage.createEvent('Brasileirinho', 'Nome do responsavel', 'Evento Teste', '200120901000');
-    let list = element.all(by.css('tr td'));
-    expect(list.get(0).getText()).toBe('Evento Teste');
-    expect(list.get(1).getText()).toBe('Nome do responsavel');
-    expect(list.get(2).getText()).toBe('Brasileirinho');
-    expect(list.get(3).getText()).toBe('20/01 às 10:00');
-    expect(list.get(4).getText()).toBe('20/01 às 08:00');
+
+    expect(element(by.css('.nomedoevento')).getText()).toBe('Evento Teste');
+    expect(element(by.css('.who')).getText()).toBe('Nome do responsavel está pedindo em Brasileirinho');
+    expect(element(by.css('.closes')).getText()).toBe('O pedido encerra em 20/01 às 08:00');
+    expect(element(by.css('.delivery')).getText()).toBe('O evento acontecerá em 20/01 às 10:00');
   });
 
   it('deve cancelar um evento', () => {
