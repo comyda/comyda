@@ -72,8 +72,8 @@ a {
 }
 
 .content {
-  padding-bottom: 100px;
   text-align: center;
+  padding: 0 150px 100px 150px;
 }
 
 html,
@@ -101,10 +101,11 @@ body  {
 }
 
 .order {
-  background: #FFFAFA;
+  background-color: rgba(255,255,255,0.5);
+  padding: 15px 0;
   list-style: none;
   margin: 20px 0;
-  padding: -10px -10px
+  margin-right: 20px 0;
 }
 
 #criar {
