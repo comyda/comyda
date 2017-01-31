@@ -97,7 +97,7 @@ body  {
   font-weight: bold;
   color: #FF7F50;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .order {
@@ -105,7 +105,9 @@ body  {
   padding: 15px 0;
   list-style: none;
   margin: 20px 0;
+  height: 60px;
   margin-right: 20px 0;
+  text-align: left;
 }
 
 #criar {
@@ -114,5 +116,32 @@ body  {
 
 #encerrado {
   font-size: 18px;
+  font-weight: bold;
+}
+
+.img-restaurant {
+  background-size: contain;
+  width: 150px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+  float: left;
+}
+
+.order div {
+  display: inline-block;
+}
+
+.who {
+  margin-bottom: 3px;
+}
+
+.ownername {
+  font-size: 19.5px;
+  font-weight: bold;
+}
+
+.restaurant {
+  font-size: 19.5px;
   font-weight: bold;
 }

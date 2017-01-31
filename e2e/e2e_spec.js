@@ -35,7 +35,7 @@ describe('Oxifood', () => {
     eventCreationPage.createEvent('Brasileirinho', 'Nome do responsavel', 'Evento Teste', '200120901000');
 
     expect(element(by.css('.nomedoevento')).getText()).toBe('Evento Teste');
-    expect(element(by.css('.who')).getText()).toBe('Nome do responsavel está pedindo em Brasileirinho');
+    expect(element(by.css('.who')).getText()).toBe('Evento Teste por Nome do responsavel está pedindo em Brasileirinho');
     expect(element(by.css('.closes')).getText()).toBe('O pedido encerra em 20/01 às 08:00');
     expect(element(by.css('.delivery')).getText()).toBe('O evento acontecerá em 20/01 às 10:00');
   });

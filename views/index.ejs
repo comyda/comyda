@@ -21,13 +21,14 @@
     <% for(var i=0; i<eventos.length; i++) {%>
 
     <li class="order">
-      <div>
-        <a class="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a>
-      </div>
+      <div class="img-restaurant" style="background-image: url(img/<%= eventos[i].imgRestaurant %>)"></div>
 
       <div class="who">
-        <%= eventos[i].ownername %> está pedindo em <%= eventos[i].restaurant%>
+        <a class="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a> por
+        <span class="ownername"><%= eventos[i].ownername %></span> está pedindo em <span class="restaurant"><%= eventos[i].restaurant%></span>
       </div>
+
+      <br>
 
       <div class="closes">
         O pedido encerra em <%= eventos[i].finishedTime %> <a id="encerrado"><%= eventos[i].status %></a>

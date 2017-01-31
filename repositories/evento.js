@@ -21,6 +21,7 @@ const EventoRepository = {
             comedorias.forEach(comedoria => {
               if (evento.restaurant === comedoria._id) {
                 evento.restaurant = comedoria.nameplace;
+                evento.imgRestaurant = comedoria.img;
               }
             });
           });
