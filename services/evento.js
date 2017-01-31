@@ -47,6 +47,7 @@ module.exports = {
     nonFinishedEvents.sort(sortEvents);
     finishedEvents.sort(sortEvents);
 
-    return nonFinishedEvents.concat(finishedEvents);
+     const quartEvent = nonFinishedEvents.concat(finishedEvents).slice(0,4);
+     return quartEvent;
   }
 };
