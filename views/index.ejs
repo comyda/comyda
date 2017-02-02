@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title>oxiFood</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   </head>
   <body>
     <header>
@@ -23,21 +22,23 @@
     <li class="order">
       <div class="img-restaurant" style="background-image: url(img/<%= eventos[i].imgRestaurant %>)"></div>
 
-      <div class="who">
-        <a class="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a> criado por
-        <span class="ownername"><%= eventos[i].ownername %></span> está pedindo em <span class="restaurant"><%= eventos[i].restaurant%></span>
-      </div>
+      <div class="text">
+        <div class="who">
+          <a class="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a> por
+          <span class="ownername"><%= eventos[i].ownername %></span> está pedindo em <span class="restaurant"><%= eventos[i].restaurant%></span>
+        </div>
 
-      <br>
+        <br>
 
-      <div class="closes">
-        O pedido encerra em <%= eventos[i].finishedTime %> <a id="encerrado"><%= eventos[i].status %></a>
-      </div>
+        <div class="closes">
+          O pedido encerra em <%= eventos[i].finishedTime %> <a id="encerrado"><%= eventos[i].status %></a>
+        </div>
 
-      <br>
+        <br>
 
-      <div class="delivery">
-        O evento acontecerá em  <%= eventos[i].timeAsString%>
+        <div class="delivery">
+          O evento acontecerá em  <%= eventos[i].timeAsString%>
+        </div>
       </div>
     </li>
     <% } %>
