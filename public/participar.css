@@ -176,3 +176,7 @@ h1 {
 #lastname {
   margin-top: 15px;
 }
+
+#link {
+  font-style: italic;
+}

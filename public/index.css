@@ -44,22 +44,6 @@ a.button {
   border-radius: 4px;
 }
 
-table {
-  margin: auto;
-  margin-top: 20px;
-  border-color: black;
-  font-size: 19px;
-}
-
-h2 {
-  text-align:center;
-  font-family:monospace;
-  font-variant: small-caps;
-  color: black;
-  font-size: 30px;
-}
-
-
 a {
   text-align: center;
   color: black;
@@ -97,7 +81,7 @@ body  {
   font-weight: bold;
   color: #FF7F50;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 .order {
@@ -137,11 +121,15 @@ body  {
 }
 
 .ownername {
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: bold;
 }
 
 .restaurant {
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: bold;
+}
+
+#link {
+  font-style: italic;
 }

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>oxiFood</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   </head>
   <body>
     <header>
@@ -24,7 +24,7 @@
       <div class="img-restaurant" style="background-image: url(img/<%= eventos[i].imgRestaurant %>)"></div>
 
       <div class="who">
-        O evento <a class="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a> criado por
+        <a class="nomedoevento" href="/eventos/<%= eventos[i]._id%>/<%= eventos[i].status%>"><%= eventos[i].name%></a> criado por
         <span class="ownername"><%= eventos[i].ownername %></span> está pedindo em <span class="restaurant"><%= eventos[i].restaurant%></span>
       </div>
 
@@ -33,6 +33,8 @@
       <div class="closes">
         O pedido encerra em <%= eventos[i].finishedTime %> <a id="encerrado"><%= eventos[i].status %></a>
       </div>
+
+      <br>
 
       <div class="delivery">
         O evento acontecerá em  <%= eventos[i].timeAsString%>
@@ -49,8 +51,8 @@
   <footer>
     <div id="rodape">
       <p>Made in Recife, oxi!</p>
-      <p>Por Leonardo Oliveira e Rayana Gonçalves at
-      <a href="https://www.thoughtworks.com/" target="_blank" style="color: #696969">
+      <p>Por Rayana, Leonardo, Myllena e Luanna para
+      <a id="link" href="https://www.thoughtworks.com/" target="_blank" style="color: #696969">
       Thoughtworks</a></p>
     </div>
   </footer>

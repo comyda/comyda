@@ -129,3 +129,7 @@ h1 {
   font-size: 35px;
   line-height: 5px;
 }
+
+#link {
+	font-style: italic;
+}
