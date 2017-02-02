@@ -97,7 +97,7 @@ body  {
   font-weight: bold;
   color: #FF7F50;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .order {
@@ -137,11 +137,11 @@ body  {
 }
 
 .ownername {
-  font-size: 19.5px;
+  font-size: 16px;
   font-weight: bold;
 }
 
 .restaurant {
-  font-size: 19.5px;
+  font-size: 16px;
   font-weight: bold;
 }

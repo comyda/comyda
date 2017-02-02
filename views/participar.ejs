@@ -33,7 +33,7 @@
       </div>
 
       <div>
-        <select name="flavor" id="choiceoffood" required="">
+        <select name="flavor" v-model="choiceOfFood" id="choiceoffood" required="">
           <option value selected>O que você quer comer?</option>
           <% for(var i=0; i < foods.length; i++) {%>
             <option value="<%= foods[i].name %>"><%= foods[i].name %></option>

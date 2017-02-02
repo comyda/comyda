@@ -7,7 +7,8 @@ new Vue({
   el: 'form',
   data: {
     firstname: '',
-    lastname: ''
+    lastname: '',
+    choiceOfFood:''
   },
   mounted: function() {
     this.eventId = location.pathname.split('/')[2];
@@ -21,7 +22,13 @@ new Vue({
       this.$http.get(url, {params: params}).then((response) => {
         if (response.body.length > 0) {
           alert('Nome e Sobrenome já cadastrado no evento');
-        } else {
+        }
+        else if (this.firstname.trim().length === 0 ||
+          this.lastname.trim().length === 0 ||
+          this.choiceOfFood.trim().length === 0) {
+            alert('Preencha todos os campos');
+        }
+        else {
           document.querySelector('form').submit();
         }
       });
